@@ -1,0 +1,23 @@
+body{
+    /*background: white url("images/background.png")*/
+    /*background: white url("https://scontent-ams3-1.cdninstagram.com/vp/2fd206978d2081455c3249cb95634b52/5B65452D/t51.2885-15/e35/30602368_236992377042252_7387320938548690944_n.jpg")*/
+}
+
+.navbar{
+    border-radius: 0;
+    background-color: chartreuse;
+    border: chartreuse;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
+    background-color: chartreuse;
+}
+
+
+
+/*.navbar-brand{*/
+    /*font-family: 'Satisfy', cursive;*/
+/*}*/
+
+
+

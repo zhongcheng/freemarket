@@ -1,0 +1,44 @@
+{% extends 'listing/base.html' %}
+
+
+{% block title %}
+    {{ item.item_name }}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid items-container">
+
+    <div class="row">
+
+        <div class="col-sm-4 col-md-4"></div>
+
+        <!-- Left Item Info -->
+        <div class="col-sm-4 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a>
+                        {% if item.photo %}
+                            <img src="{{ item.photo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h2>{{ item.item_name }} <small>{{ item.city }}</small></h2>
+                    <h4>{{ item.description }}</h4>
+                    <h5>Contact: {{ item.contact_info }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4"></div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
