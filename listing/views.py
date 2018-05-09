@@ -15,6 +15,7 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, 'listing/index_visitor.html', {'items': items})
     else:
+        user = request.user
         # if a search is applied
         query = request.GET.get("q")
         if query:
@@ -22,7 +23,7 @@ def index(request):
                 Q(city__iexact=query)
             ).distinct()
 
-        return render(request, 'listing/index.html', {'items': items})
+        return render(request, 'listing/index.html', {'items': items, 'user': user})
 
 
 def index_visitor(request):
