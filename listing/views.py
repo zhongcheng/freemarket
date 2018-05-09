@@ -129,6 +129,29 @@ def register(request):
     return render(request, 'listing/register.html', context)
 
 
+def my_info(request):
+    if not request.user.is_authenticated:
+        return render(request, 'listing/login.html')
+    else:
+        user = request.user
+        form = UserForm(request.POST or None, instance=user)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    items = Item.objects.all()
+                    return render(request, 'listing/index.html', {'items': items})
+        context = {
+            "form": form,
+        }
+        return render(request, 'listing/my_info.html', context)
+
+
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)

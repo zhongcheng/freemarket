@@ -13,6 +13,9 @@ urlpatterns = [
     # /register/
     url(r'^register/$', views.register, name='register'),
 
+    # /my_info/
+    url(r'^my_info/$', views.my_info, name='my_info'),
+
     # /login_user/
     url(r'^login_user/$', views.login_user, name='login_user'),
 
