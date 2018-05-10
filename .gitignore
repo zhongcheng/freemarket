@@ -10,9 +10,11 @@ db.sqlite3
 # Compiled source code
 freemarket/__pycache__/
 listing/__pycache__/
-listing/migrations/__pycache__/
+#listing/migrations/__pycache__/
 
 .idea/
 
 # Created by collectstatic
 static/
+
+listing/migrations/
