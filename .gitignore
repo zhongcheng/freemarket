@@ -13,3 +13,6 @@ listing/__pycache__/
 listing/migrations/__pycache__/
 
 .idea/
+
+# Created by collectstatic
+static/
