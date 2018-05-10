@@ -5,7 +5,7 @@ db.sqlite3
 *.jpg
 *.jpeg
 
-
+media/
 
 # Compiled source code
 freemarket/__pycache__/
