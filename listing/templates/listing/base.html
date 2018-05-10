@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Free Market{% endblock %}</title>
     {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=satisfy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'listing/style.css' %}"/>
@@ -48,12 +49,12 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Item
                     </a>
                 </li>
-                <li class="">
+                <li class="{% block my_items_active %}{% endblock %}">
                     <a href="{% url 'listing:my_items' %}">
                         <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp; My Items
                     </a>
                 </li>
-                <li class="">
+                <li class="{% block my_info_active %}{% endblock %}">
                     <a href="{% url 'listing:my_info' %}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; My Info
                     </a>
