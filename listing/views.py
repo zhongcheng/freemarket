@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .forms import ItemForm, UserForm
+from .forms import ItemForm, UserForm, RegistrationForm
 from .models import Item
 
 
@@ -110,13 +110,11 @@ def delete_item(request, item_id):
 
 
 def register(request):
-    form = UserForm(request.POST or None)
+    form = RegistrationForm(request.POST or None)
     if form.is_valid():
-        user = form.save(commit=False)
         username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user.set_password(password)
-        user.save()
+        password = form.cleaned_data['password1']
+        form.save()
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
@@ -134,12 +132,11 @@ def my_info(request):
         return render(request, 'listing/login.html')
     else:
         user = request.user
-        form = UserForm(request.POST or None, instance=user)
+        form = RegistrationForm(request.POST or None, instance=user)
         if form.is_valid():
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
+            password = form.cleaned_data['password1']
+            form.save()
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
