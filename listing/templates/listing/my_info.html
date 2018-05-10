@@ -1,6 +1,6 @@
 {% extends 'listing/base.html' %}
 {% block title %}My Info{% endblock %}
-{#{% block register_active %}active{% endblock %}#}
+{% block my_info_active %}active{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
@@ -14,11 +14,13 @@
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
+                    <div style="height: 20px"></div>
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'listing/form_template.html' %}
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
+                            <div style="height: 80px"></div>
+                            <div class="col-sm-offset-5 col-sm-7">
                                 <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </div>

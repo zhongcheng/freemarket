@@ -11,16 +11,18 @@
         <div class="col-sm-12 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>REGISTER</h3>
+{#                    <h3><p class="text-center">REGISTER</p></h3>#}
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
+                    <div style="height: 20px"></div>
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'listing/form_template.html' %}
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                            <div style="height: 80px"></div>
+                            <div class="col-sm-offset-5 col-sm-7">
+                                <button type="submit" class="btn btn-success">Register</button>
                             </div>
                         </div>
                     </form>

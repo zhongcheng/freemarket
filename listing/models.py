@@ -6,7 +6,7 @@ from django.db import models
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=50)
-    description = models.CharField(max_length=500, blank=True)
+    description = models.TextField(max_length=500, blank=True)
     city = models.CharField(max_length=50)
     contact_info = models.CharField(max_length=200)
     photo = models.FileField()
