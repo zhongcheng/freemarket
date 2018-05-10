@@ -25,7 +25,7 @@ SECRET_KEY = '@*zna1%n2te2xnbz))^wr2!kb_qpc3v(9@rl#kg_rc4bgi5(+7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'freemarket.pythonanywhere.com']
+# ALLOWED_HOSTS = [u'freemarket.pythonanywhere.com']
 
 
 # Application definition
