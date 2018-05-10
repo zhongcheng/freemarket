@@ -3,3 +3,6 @@
 *.jpg
 *.jpeg
 
+# Compiled source code
+freemarket/__pycache__/
+listing/__pycache__/
