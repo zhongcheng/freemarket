@@ -6,5 +6,6 @@
 # Compiled source code
 freemarket/__pycache__/
 listing/__pycache__/
+listing/migrations/__pycache__/
 
 db.sqlite3
