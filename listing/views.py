@@ -22,7 +22,7 @@ def index(request):
             items = Item.objects.all()
             items = items.filter(
                 Q(city__iexact=query)
-            ).distinct().order_by('-id')[:150]
+            ).distinct().order_by('-id')[:200]
 
         return render(request, 'listing/index.html', {'items': items, 'user': user})
 
