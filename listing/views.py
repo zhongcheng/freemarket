@@ -11,7 +11,7 @@ IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
 
 def index(request):
-    items = Item.objects.all()
+    items = Item.objects.all().order_by('-id')[:100]
     if not request.user.is_authenticated:
         return render(request, 'listing/index_visitor.html', {'items': items})
     else:
@@ -19,15 +19,16 @@ def index(request):
         # if a search is applied
         query = request.GET.get("q")
         if query:
+            items = Item.objects.all()
             items = items.filter(
                 Q(city__iexact=query)
-            ).distinct()
+            ).distinct().order_by('-id')[:150]
 
         return render(request, 'listing/index.html', {'items': items, 'user': user})
 
 
 def index_visitor(request):
-    items = Item.objects.all()
+    items = Item.objects.all().order_by('-id')[:100]
     return render(request, 'listing/index_visitor.html', {'items': items})
 
 
@@ -119,7 +120,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                items = Item.objects.all()
+                items = Item.objects.all().order_by('-id')[:100]
                 return render(request, 'listing/index.html', {'items': items})
     context = {
         "form": form,
@@ -141,7 +142,7 @@ def my_info(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    items = Item.objects.all()
+                    items = Item.objects.all().order_by('-id')[:100]
                     return render(request, 'listing/index.html', {'items': items})
         context = {
             "form": form,
@@ -166,7 +167,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                items = Item.objects.all()
+                items = Item.objects.all().order_by('-id')[:100]
                 return render(request, 'listing/index.html', {'items': items})
             else:
                 return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})

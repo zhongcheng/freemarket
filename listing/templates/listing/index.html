@@ -7,7 +7,7 @@
     <!-- Items -->
     <div class="row">
         {% if items %}
-            {% for item in items reversed %}
+            {% for item in items %}
                 <div class="col-sm-4 col-lg-2">
                     <div class="thumbnail">
                         <a href="{% url 'listing:detail' item.id %}">
