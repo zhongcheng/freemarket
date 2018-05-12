@@ -5,10 +5,10 @@ from django.db import models
 # need to update database (migrate) when change the structure of a class
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    item_name = models.CharField(max_length=50)
+    item_name = models.CharField(max_length=20)
     description = models.TextField(max_length=500, blank=True)
-    city = models.CharField(max_length=50)
-    contact_info = models.CharField(max_length=200)
+    city = models.CharField(max_length=20)
+    contact_info = models.CharField(max_length=60)
     photo = models.FileField()
     time = models.DateField(auto_now=True)
 
