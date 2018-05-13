@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from .recaptcha import check_recaptcha
 
 app_name = 'listing'
 
@@ -11,13 +12,13 @@ urlpatterns = [
     url(r'^visitor/$', views.index_visitor, name='index_visitor'),
 
     # /register/
-    url(r'^register/$', views.register, name='register'),
+    url(r'^register/$', check_recaptcha(views.register), name='register'),
 
     # /my_info/
     url(r'^my_info/$', views.my_info, name='my_info'),
 
     # /login_user/
-    url(r'^login_user/$', views.login_user, name='login_user'),
+    url(r'^login_user/$', check_recaptcha(views.login_user), name='login_user'),
 
     # /logout_user/
     url(r'^logout_user/$', views.logout_user, name='logout_user'),
