@@ -58,7 +58,7 @@ def add_item(request):
                     'error_message': 'Image file must be PNG, JPG, or JPEG',
                 }
                 return render(request, 'listing/add_item.html', context)
-            item.save()
+            item.add_item_save()
             return render(request, 'listing/detail.html', {'item': item})
         context = {
             "form": form,

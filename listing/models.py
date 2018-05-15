@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from PIL import Image
 from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 
 
 # need to update database (migrate) when change the structure of a class
@@ -14,11 +16,12 @@ class Item(models.Model):
     photo = models.FileField()
     time = models.DateField(auto_now=True)
 
-    def save(self):
+    def add_item_save(self):
         img = Image.open(self.photo)
         output = BytesIO()
         img.save(output, format='JPEG', quality=70)
         output.seek(0)
+        self.photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.photo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
         super(Item, self).save()
 
     def __str__(self):
