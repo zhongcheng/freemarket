@@ -28,11 +28,17 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav navbar-right">
+                <li class="{% block login_active %}{% endblock %}">
+                    <a href="{% url 'listing:login_user' %}">Log In</a>
+                </li>
                 <li class="{% block register_active %}{% endblock %}">
                     <a href="{% url 'listing:register' %}">Register</a>
                 </li>
-                <li class="{% block login_active %}{% endblock %}">
-                    <a href="{% url 'listing:login_user' %}">Log In</a>
+                <li class="">
+                    <a href="https://www.facebook.com/messages/t/freemarket.nl.2017">
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contact us
+                    </a>
+{#                    <a href="https://www.facebook.com/messages/t/freemarket.nl.2017">Contact us</a>#}
                 </li>
             </ul>
         </div>
