@@ -4,19 +4,21 @@ db.sqlite3
 *.png
 *.jpg
 *.jpeg
-
 !ogimage.jpg
 
 # Compiled source code
 freemarket/__pycache__/
 listing/__pycache__/
-#listing/migrations/__pycache__/
+listing/migrations/__pycache__/
 
 .idea/
 
 # Created by collectstatic
 static/
-
 !listing/static/
 
-listing/migrations/
+# Migration history
+000*
+!__init__.py
+!0001_initial.py
+!0002_item_time.py
