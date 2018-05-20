@@ -1,7 +1,5 @@
 db.sqlite3
 
-# Image file
-
 media/
 
 # Compiled source code
@@ -13,5 +11,7 @@ listing/__pycache__/
 
 # Created by collectstatic
 static/
+
+!listing/static/
 
 listing/migrations/
