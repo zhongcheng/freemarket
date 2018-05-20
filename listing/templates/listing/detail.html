@@ -1,4 +1,5 @@
 {% extends 'listing/base.html' %}
+{% load url_target_blank %}
 
 
 {% block title %}
@@ -27,7 +28,7 @@
                     </a>
                     <h2>{{ item.item_name }} <small>{{ item.city }}</small></h2>
                     <h4>{{ item.description }}</h4>
-                    <h5>Contact: {{ item.contact_info }}</h5>
+                    <h5>Contact: {{ item.contact_info|urlize|url_target_blank }}</h5>
                 </div>
             </div>
         </div>

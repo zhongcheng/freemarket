@@ -13,6 +13,7 @@ db.sqlite3
 freemarket/__pycache__/
 listing/__pycache__/
 listing/migrations/__pycache__/
+listing/templatetags/__pycache__/
 
 .idea/
 
