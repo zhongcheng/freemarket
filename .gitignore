@@ -1,11 +1,7 @@
 db.sqlite3
 
 # Image file
-*.png
-*.jpg
-*.jpeg
 
-!ogimage.jpg
 media/
 
 # Compiled source code
