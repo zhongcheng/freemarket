@@ -1,6 +1,11 @@
 db.sqlite3
 
-media/
+# Image file
+*.png
+*.jpg
+*.jpeg
+
+!ogimage.jpg
 
 # Compiled source code
 freemarket/__pycache__/
