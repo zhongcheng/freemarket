@@ -145,15 +145,7 @@ def register(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    all_items = Item.objects.all().order_by('-id')
-                    page = request.GET.get('page', 1)
-                    paginator = Paginator(all_items, 18)
-                    try:
-                        items = paginator.page(page)
-                    except PageNotAnInteger:
-                        items = paginator.page(1)
-                    except EmptyPage:
-                        items = paginator.page(paginator.num_pages)
+                    items = Item.objects.all().order_by('-id')[:72]
                     return render(request, 'listing/index.html', {'items': items})
     context = {
         "form": form,
@@ -175,15 +167,7 @@ def my_info(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    all_items = Item.objects.all().order_by('-id')
-                    page = request.GET.get('page', 1)
-                    paginator = Paginator(all_items, 18)
-                    try:
-                        items = paginator.page(page)
-                    except PageNotAnInteger:
-                        items = paginator.page(1)
-                    except EmptyPage:
-                        items = paginator.page(paginator.num_pages)
+                    items = Item.objects.all().order_by('-id')[:72]
                     return render(request, 'listing/index.html', {'items': items})
         context = {
             "form": form,
@@ -208,15 +192,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                all_items = Item.objects.all().order_by('-id')
-                page = request.GET.get('page', 1)
-                paginator = Paginator(all_items, 18)
-                try:
-                    items = paginator.page(page)
-                except PageNotAnInteger:
-                    items = paginator.page(1)
-                except EmptyPage:
-                    items = paginator.page(paginator.num_pages)
+                items = Item.objects.all().order_by('-id')[:72]
                 return render(request, 'listing/index.html', {'items': items})
             else:
                 return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})
