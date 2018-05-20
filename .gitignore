@@ -4,8 +4,8 @@ db.sqlite3
 *.png
 *.jpg
 *.jpeg
-!og_image.jpg
 
+!ogimage.jpg
 media/
 
 # Compiled source code
