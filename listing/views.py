@@ -145,7 +145,7 @@ def register(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    items = Item.objects.all().order_by('-id')[:72]
+                    items = Item.objects.all().order_by('-id')[:54]
                     return render(request, 'listing/index.html', {'items': items})
     context = {
         "form": form,
@@ -167,7 +167,7 @@ def my_info(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    items = Item.objects.all().order_by('-id')[:72]
+                    items = Item.objects.all().order_by('-id')[:54]
                     return render(request, 'listing/index.html', {'items': items})
         context = {
             "form": form,
@@ -192,7 +192,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                items = Item.objects.all().order_by('-id')[:72]
+                items = Item.objects.all().order_by('-id')[:54]
                 return render(request, 'listing/index.html', {'items': items})
             else:
                 return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})
