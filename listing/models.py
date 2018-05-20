@@ -19,7 +19,7 @@ class Item(models.Model):
     def add_item_save(self):
         img = Image.open(self.photo)
         output = BytesIO()
-        img.save(output, format='JPEG', quality=70)
+        img.save(output, format='JPEG', quality=60)
         output.seek(0)
         self.photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.photo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
         super(Item, self).save()
