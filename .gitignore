@@ -2,8 +2,11 @@ db.sqlite3
 
 # Image file
 *.png
+*.PNG
 *.jpg
+*.JPG
 *.jpeg
+*.JPEG
 !ogimage.jpg
 
 # Compiled source code
