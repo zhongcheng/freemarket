@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .forms import ItemForm, UserForm, RegistrationForm
 from .models import Item
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
@@ -28,7 +28,15 @@ def index(request):
 
 
 def index_visitor(request):
-    items = Item.objects.all().order_by('-id')[:100]
+    all_items = Item.objects.all().order_by('-id')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(all_items, 18)
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
     return render(request, 'listing/index_visitor.html', {'items': items})
 
 
