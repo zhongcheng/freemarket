@@ -11,7 +11,16 @@ IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
 
 def index(request):
-    items = Item.objects.all().order_by('-id')[:100]
+    all_items = Item.objects.all().order_by('-id')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(all_items, 18)
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
+
     if not request.user.is_authenticated:
         return render(request, 'listing/index_visitor.html', {'items': items})
     else:
@@ -19,10 +28,17 @@ def index(request):
         # if a search is applied
         query = request.GET.get("q")
         if query:
-            items = Item.objects.all()
-            items = items.filter(
+            found_items = all_items.filter(
                 Q(city__iexact=query)
-            ).distinct().order_by('-id')[:200]
+            ).distinct().order_by('-id')
+            page = request.GET.get('page', 1)
+            paginator = Paginator(found_items, 18)
+            try:
+                items = paginator.page(page)
+            except PageNotAnInteger:
+                items = paginator.page(1)
+            except EmptyPage:
+                items = paginator.page(paginator.num_pages)
 
         return render(request, 'listing/index.html', {'items': items, 'user': user})
 
@@ -129,7 +145,15 @@ def register(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    items = Item.objects.all().order_by('-id')[:100]
+                    all_items = Item.objects.all().order_by('-id')
+                    page = request.GET.get('page', 1)
+                    paginator = Paginator(all_items, 18)
+                    try:
+                        items = paginator.page(page)
+                    except PageNotAnInteger:
+                        items = paginator.page(1)
+                    except EmptyPage:
+                        items = paginator.page(paginator.num_pages)
                     return render(request, 'listing/index.html', {'items': items})
     context = {
         "form": form,
@@ -151,7 +175,15 @@ def my_info(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    items = Item.objects.all().order_by('-id')[:100]
+                    all_items = Item.objects.all().order_by('-id')
+                    page = request.GET.get('page', 1)
+                    paginator = Paginator(all_items, 18)
+                    try:
+                        items = paginator.page(page)
+                    except PageNotAnInteger:
+                        items = paginator.page(1)
+                    except EmptyPage:
+                        items = paginator.page(paginator.num_pages)
                     return render(request, 'listing/index.html', {'items': items})
         context = {
             "form": form,
@@ -176,7 +208,15 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                items = Item.objects.all().order_by('-id')[:100]
+                all_items = Item.objects.all().order_by('-id')
+                page = request.GET.get('page', 1)
+                paginator = Paginator(all_items, 18)
+                try:
+                    items = paginator.page(page)
+                except PageNotAnInteger:
+                    items = paginator.page(1)
+                except EmptyPage:
+                    items = paginator.page(paginator.num_pages)
                 return render(request, 'listing/index.html', {'items': items})
             else:
                 return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})

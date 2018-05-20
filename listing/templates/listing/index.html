@@ -2,13 +2,13 @@
 {% block items_active %}active{% endblock %}
 
 {% block body %}
-<div class="items-container container-fluid">
+<div class="infinite-container container-fluid">
 
     <!-- Items -->
     <div class="row">
         {% if items %}
             {% for item in items %}
-                <div class="col-sm-4 col-lg-2">
+                <div class="col-sm-4 col-lg-2 infinite-item">
                     <div class="thumbnail">
                         <div class="image">
                             <a href="{% url 'listing:detail' item.id %}">
@@ -27,4 +27,15 @@
     </div>
 
 </div>
+
+    {% if items.has_next %}
+        <a class="infinite-more-link" href="?page={{ items.next_page_number }}"></a>
+    {% endif %}
+
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0]
+        });
+    </script>
+
 {% endblock %}
