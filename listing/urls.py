@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^my_info/$', views.my_info, name='my_info'),
 
     # /login_user/
-    url(r'^login_user/$', check_recaptcha(views.login_user), name='login_user'),
+    url(r'^login_user/$', views.login_user, name='login_user'),
 
     # /logout_user/
     url(r'^logout_user/$', views.logout_user, name='logout_user'),

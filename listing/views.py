@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from .forms import ItemForm, UserForm, RegistrationForm
+from .forms import ItemForm, RegistrationForm
 from .models import Item
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -45,7 +45,7 @@ def index(request):
 
 def detail(request, item_id):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
     else:
         # user = request.user
         item = get_object_or_404(Item, pk=item_id)
@@ -162,11 +162,7 @@ def my_info(request):
 
 def logout_user(request):
     logout(request)
-    form = UserForm(request.POST or None)
-    context = {
-        "form": form,
-    }
-    return render(request, 'listing/login.html', context)
+    return redirect('listing:index')
 
 
 def login_user(request):
