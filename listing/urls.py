@@ -8,9 +8,6 @@ urlpatterns = [
     # /
     url(r'^$', views.index, name='index'),
 
-    # /visitor/
-    url(r'^visitor/$', views.index_visitor, name='index_visitor'),
-
     # /register/
     url(r'^register/$', check_recaptcha(views.register), name='register'),
 
