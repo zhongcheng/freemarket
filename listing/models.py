@@ -12,7 +12,7 @@ class Item(models.Model):
     item_name = models.CharField(max_length=20)
     description = models.TextField(max_length=500, blank=True)
     city = models.CharField(max_length=20)
-    contact_info = models.CharField(max_length=60)
+    contact_info = models.CharField(max_length=45)
     photo = models.FileField()
     time = models.DateField(auto_now=True)
 
