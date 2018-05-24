@@ -21,25 +21,26 @@
     padding-bottom: 100%;
 }
 
-.image img {
+.image img.portrait {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
 
-/*.image img.portrait {*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translateX(-50%) translateY(-50%);*/
-/*}*/
+.image img.landscape {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,-50%);
+}
 
-/*.image img.landscape {*/
-    /*position: absolute;*/
-    /*left: 50%;*/
-    /*top: 50%;*/
-    /*height: 100%;*/
-    /*width: auto;*/
-    /*transform: translate(-50%,-50%);*/
-/*}*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+

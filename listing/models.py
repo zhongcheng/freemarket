@@ -15,8 +15,8 @@ class Item(models.Model):
     contact_info = models.CharField(max_length=45)
     photo = models.FileField()
     time = models.DateField(auto_now=True)
-    # photo_width = models.IntegerField(null=True)
-    # photo_height = models.IntegerField(null=True)
+    photo_width = models.IntegerField(null=True)
+    photo_height = models.IntegerField(null=True)
 
     def add_item_save(self):
         img = Image.open(self.photo)
