@@ -71,7 +71,7 @@ def add_item(request):
                 }
                 return render(request, 'listing/add_item.html', context)
             item.photo_width, item.photo_height = get_image_dimensions(item.photo)
-            item.add_item_save()
+            item.compress_image_save()
             return render(request, 'listing/detail.html', {'item': item})
         context = {
             "form": form,
@@ -92,6 +92,8 @@ def update_item(request, item_id):
         return render(request, 'listing/login.html')
     else:
         item = Item.objects.get(pk=item_id)
+        photo_old = item.photo
+        photo_old_size = item.photo.size
         if item.user == request.user:
             form = ItemForm(request.POST or None, request.FILES or None, instance=item)
             if form.is_valid():
@@ -104,7 +106,10 @@ def update_item(request, item_id):
                     }
                     return render(request, 'listing/update_item.html', context)
                 item.photo_width, item.photo_height = get_image_dimensions(item.photo)
-                item.add_item_save()
+                if photo_old == item.photo and photo_old_size == item.photo.size:
+                    item.save()
+                else:
+                    item.compress_image_save()
                 return render(request, 'listing/detail.html', {'item': item})
             context = {
                 "form": form,

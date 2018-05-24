@@ -18,7 +18,7 @@ class Item(models.Model):
     photo_width = models.IntegerField(null=True)
     photo_height = models.IntegerField(null=True)
 
-    def add_item_save(self):
+    def compress_image_save(self):
         img = Image.open(self.photo)
         output = BytesIO()
         img.save(output, format='JPEG', quality=60)
