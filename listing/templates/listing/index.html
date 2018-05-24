@@ -12,10 +12,10 @@
                     <div class="thumbnail" style="padding:0px;">
                         <div class="image">
                             <a href="{% url 'listing:detail' item.id %}">
-                                {% if item.photo_width < item.photo_height %}
-                                    <img src="{{ item.photo.url }}" class="img-responsive portrait">
-                                {% else %}
+                                {% if item.photo_width > item.photo_height %}
                                     <img src="{{ item.photo.url }}" class="img-responsive landscape">
+                                {% else %}
+                                    <img src="{{ item.photo.url }}" class="img-responsive portrait">
                                 {% endif %}
                             </a>
                         </div>
