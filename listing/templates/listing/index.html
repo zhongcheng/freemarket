@@ -13,6 +13,11 @@
                         <div class="image">
                             <a href="{% url 'listing:detail' item.id %}">
                                 <img src="{{ item.photo.url }}" class="img-responsive">
+{#                                {% if item.photo_width < item.photo_height %}#}
+{#                                    <img src="{{ item.photo.url }}" class="img-responsive portrait">#}
+{#                                {% else %}#}
+{#                                    <img src="{{ item.photo.url }}" class="img-responsive landscape">#}
+{#                                {% endif %}#}
                             </a>
                         </div>
                         <div class="caption">

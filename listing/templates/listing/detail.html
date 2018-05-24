@@ -19,15 +19,13 @@
         <div class="col-sm-6 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body" style="padding:0px;">
-                    <div class="image">
-                        <a>
-                            {% if item.photo %}
-                                <img src="{{ item.photo.url }}" class="img-responsive">
-                            {% else %}
-                                <h3>No image to display</h3>
-                            {% endif %}
-                        </a>
-                    </div>
+                    <a>
+                        {% if item.photo %}
+                            <img src="{{ item.photo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
                     <h2 style="padding-left:10px; padding-right:10px;">{{ item.item_name }} <small>{{ item.city }}</small></h2>
                     <h4 style="padding-left:10px; padding-right:5px;">{{ item.description }}</h4>
                     <h5 style="padding-left:10px;">Contact: {{ item.contact_info|urlize|url_target_blank }}</h5>

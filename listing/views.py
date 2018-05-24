@@ -5,6 +5,7 @@ from django.db.models import Q
 from .forms import ItemForm, RegistrationForm
 from .models import Item
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.core.files.images import get_image_dimensions
 
 
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
@@ -69,6 +70,7 @@ def add_item(request):
                     'error_message': 'Image file must be PNG, JPG, or JPEG',
                 }
                 return render(request, 'listing/add_item.html', context)
+            # item.photo_width, item.photo_height = get_image_dimensions(item.photo)
             item.add_item_save()
             return render(request, 'listing/detail.html', {'item': item})
         context = {
