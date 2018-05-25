@@ -127,10 +127,9 @@ def delete_item(request, item_id):
         item = Item.objects.get(pk=item_id)
         if item.user == request.user:
             image_path = settings.MEDIA_ROOT + '\\' + item.photo.name
-            print(image_path)
+            item.delete()
             if os.path.isfile(image_path):
                 os.remove(image_path)
-            item.delete()
         items = Item.objects.filter(user=request.user)
         return render(request, 'listing/my_items.html', {'items': items})
 
