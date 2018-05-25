@@ -112,7 +112,7 @@ def update_item(request, item_id):
                     item.save()
                 else:
                     item.compress_image_save()
-                    image_path = settings.MEDIA_ROOT + '\\' + photo_old.name
+                    image_path = settings.MEDIA_ROOT + '/' + photo_old.name
                     if os.path.isfile(image_path):
                         os.remove(image_path)
                 return render(request, 'listing/detail.html', {'item': item})
