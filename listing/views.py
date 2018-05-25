@@ -129,7 +129,7 @@ def delete_item(request, item_id):
     else:
         item = Item.objects.get(pk=item_id)
         if item.user == request.user:
-            image_path = settings.MEDIA_ROOT + '\\' + item.photo.name
+            image_path = settings.MEDIA_ROOT + '/' + item.photo.name
             item.delete()
             if os.path.isfile(image_path):
                 os.remove(image_path)
