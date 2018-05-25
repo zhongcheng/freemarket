@@ -6,6 +6,8 @@ from .forms import ItemForm, RegistrationForm
 from .models import Item
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.images import get_image_dimensions
+from django.conf import settings
+import os
 
 
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
@@ -124,6 +126,10 @@ def delete_item(request, item_id):
     else:
         item = Item.objects.get(pk=item_id)
         if item.user == request.user:
+            image_path = settings.MEDIA_ROOT + '\\' + item.photo.name
+            print(image_path)
+            if os.path.isfile(image_path):
+                os.remove(image_path)
             item.delete()
         items = Item.objects.filter(user=request.user)
         return render(request, 'listing/my_items.html', {'items': items})
