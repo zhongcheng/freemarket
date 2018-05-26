@@ -1,3 +1,4 @@
+/* change navbar background color-style */
 .navbar{
     border-radius: 0;
     background-color: chartreuse;
@@ -9,12 +10,29 @@
 }
 
 
+/* change navbar toggle button color-style */
+.navbar-inverse .navbar-toggle {
+    border-color: chartreuse;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: chartreuse;
+    border-color: white;
+}
+
+
+/* change navbar line color-style */
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #9d9d9d;
+}
+
 
 /*.navbar-brand{*/
     /*font-family: 'Satisfy', cursive;*/
 /*}*/
 
 
+/* resize and crop thumbnail image */
 .image {
     position: relative;
     overflow: hidden;
@@ -38,6 +56,8 @@
     transform: translate(-50%,-50%);
 }
 
+
+/* center and resize detail page image */
 .center {
     display: block;
     margin-left: auto;
