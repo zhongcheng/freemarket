@@ -57,7 +57,7 @@ def detail(request, item_id):
 
 def add_item(request):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
     else:
         form = ItemForm(request.POST or None, request.FILES or None)
         if form.is_valid():
@@ -83,7 +83,8 @@ def add_item(request):
 
 def my_items(request):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
+        # return render(request, 'listing/login.html')
     else:
         items = Item.objects.filter(user=request.user)
         return render(request, 'listing/my_items.html', {'items': items})
@@ -91,7 +92,7 @@ def my_items(request):
 
 def update_item(request, item_id):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
     else:
         item = Item.objects.get(pk=item_id)
         photo_old = item.photo
@@ -125,7 +126,7 @@ def update_item(request, item_id):
 
 def delete_item(request, item_id):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
     else:
         item = Item.objects.get(pk=item_id)
         if item.user == request.user:
@@ -138,26 +139,29 @@ def delete_item(request, item_id):
 
 
 def register(request):
-    form = RegistrationForm(request.POST or None)
-    if request.recaptcha_is_valid:
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            form.save()
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('listing:index')
-    context = {
-        "form": form,
-    }
-    return render(request, 'listing/register.html', context)
+    if request.user.is_authenticated:
+        return redirect('listing:index')
+    else:
+        form = RegistrationForm(request.POST or None)
+        if request.recaptcha_is_valid:
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password1']
+                form.save()
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('listing:index')
+        context = {
+            "form": form,
+        }
+        return render(request, 'listing/register.html', context)
 
 
 def my_info(request):
     if not request.user.is_authenticated:
-        return render(request, 'listing/login.html')
+        return redirect('listing:login_user')
     else:
         user = request.user
         form = RegistrationForm(request.POST or None, instance=user)
@@ -182,21 +186,24 @@ def logout_user(request):
 
 
 def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return redirect('listing:index')
-                # items = Item.objects.all().order_by('-id')[:54]
-                # return render(request, 'listing/index.html', {'items': items})
+    if request.user.is_authenticated:
+        return redirect('listing:index')
+    else:
+        if request.method == "POST":
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('listing:index')
+                    # items = Item.objects.all().order_by('-id')[:54]
+                    # return render(request, 'listing/index.html', {'items': items})
+                else:
+                    return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})
             else:
-                return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})
-        else:
-            return render(request, 'listing/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'listing/login.html')
+                return render(request, 'listing/login.html', {'error_message': 'Invalid login'})
+        return render(request, 'listing/login.html')
 
 
 
