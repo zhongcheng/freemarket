@@ -15,7 +15,7 @@
     <script src="{% static 'js/infinite.min.js' %}"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 10px">
     <div class="container-fluid">
 
 {#        Header#}
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <input placeholder="type your city's name here" type="text" class="form-control" name="q" value="{{ request.GET.q }}">
                 </div>
-                <button type="submit" class="btn btn-default">See Items in Your City</button>
+                <button type="submit" class="btn btn-default">See Free Items in Your City</button>
             </form>
 
             <ul class="nav navbar-nav navbar-right">
