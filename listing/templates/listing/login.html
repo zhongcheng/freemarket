@@ -15,7 +15,7 @@
                 <div class="panel-body">
 {#                    <h3>LOGIN</h3>#}
                     {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
+                        <p align="center" style="color: red"><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <div style="height: 20px"></div>
                     <form class="form-horizontal" role="form" action="{% url 'listing:login_user'%}" method="post" enctype="multipart/form-data">

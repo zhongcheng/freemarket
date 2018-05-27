@@ -15,18 +15,17 @@
                 <div class="panel-body">
 {#                    <h3><p class="text-center">REGISTER</p></h3>#}
                     {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
+                        <p align="center" style="color: red"><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <div style="height: 20px"></div>
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <script src='https://www.google.com/recaptcha/api.js'></script>
-                            <div align="center" class="g-recaptcha" data-sitekey="6Lce-1gUAAAAADVCcNOwXkdtQZBCzWVCI3KeRI92"></div>
-                        </div>
                         {% include 'listing/form_template.html' %}
                         <div class="form-group">
-                            <div style="height: 80px"></div>
+                            <div style="height: 100px"></div>
+                            <script src='https://www.google.com/recaptcha/api.js'></script>
+                            <div align="center" class="g-recaptcha" data-sitekey="6Lce-1gUAAAAADVCcNOwXkdtQZBCzWVCI3KeRI92"></div>
+                            <div style="height: 45px"></div>
                             <div class="col-sm-offset-5 col-sm-7">
                                 <button type="submit" class="btn btn-success">Register</button>
                             </div>

@@ -153,10 +153,22 @@ def register(request):
                     if user.is_active:
                         login(request, user)
                         return redirect('listing:index')
-        context = {
-            "form": form,
-        }
-        return render(request, 'listing/register.html', context)
+            else:
+                context = {
+                    "form": form,
+                }
+                return render(request, 'listing/register.html', context)
+        else:
+            if form.is_valid():
+                context = {
+                    "form": form,
+                    "error_message": 'Please verify that you are not a robot.',
+                }
+            else:
+                context = {
+                    "form": form,
+                }
+            return render(request, 'listing/register.html', context)
 
 
 def my_info(request):
@@ -200,9 +212,9 @@ def login_user(request):
                     # items = Item.objects.all().order_by('-id')[:54]
                     # return render(request, 'listing/index.html', {'items': items})
                 else:
-                    return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled'})
+                    return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled.'})
             else:
-                return render(request, 'listing/login.html', {'error_message': 'Invalid login'})
+                return render(request, 'listing/login.html', {'error_message': 'Invalid login!'})
         return render(request, 'listing/login.html')
 
 
