@@ -25,7 +25,7 @@ SECURE_SSL_REDIRECT = True
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lce-1gUAAAAAEAEhHhMZh9o8Un4tTM5ziXBd8Ti'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [u'freemarket.pythonanywhere.com', u'www.free-market.nl', '127.0.0.1']
 
