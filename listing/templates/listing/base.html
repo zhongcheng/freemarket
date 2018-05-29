@@ -19,6 +19,8 @@
         background-color: #f44336;
         color: white;
         border-radius: 0;
+        opacity: 1;
+        transition: opacity 2s;
     }
 
     .closebtn {
@@ -29,7 +31,7 @@
         font-size: 22px;
         line-height: 20px;
         cursor: pointer;
-        transition: 0.3s;
+        transition: 2s;
     }
 
     .closebtn:hover {
@@ -103,5 +105,19 @@
 </nav>
 {% block body %}
 {% endblock %}
+
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+        var div = this.parentElement;
+        div.style.opacity = "0";
+        setTimeout(function(){ div.style.display = "none"; }, 2000);
+    }
+}
+</script>
+
 </body>
 </html>
