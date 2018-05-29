@@ -65,3 +65,28 @@
     width: 100%;
 }
 
+
+/* button color-style */
+.btn {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 2s;
+}
+
+.btn-success {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+
+.btn-success:focus {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+

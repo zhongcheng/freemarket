@@ -3,6 +3,13 @@
 {% block register_active %}active{% endblock %}
 
 {% block body %}
+{% if error_message %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>{{ error_message }}</strong>
+    </div>
+{% endif %}
+
 <div class="container-fluid">
 
     <div style="height: 50px"></div>
@@ -14,9 +21,6 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 {#                    <h3><p class="text-center">REGISTER</p></h3>#}
-                    {% if error_message %}
-                        <p align="center" style="color: red"><strong>{{ error_message }}</strong></p>
-                    {% endif %}
                     <div style="height: 20px"></div>
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -25,7 +29,7 @@
                             <div style="height: 100px"></div>
                             <script src='https://www.google.com/recaptcha/api.js'></script>
                             <div align="center" class="g-recaptcha" data-sitekey="6Lce-1gUAAAAADVCcNOwXkdtQZBCzWVCI3KeRI92"></div>
-                            <div style="height: 45px"></div>
+                            <div style="height: 55px"></div>
                             <div class="col-sm-offset-5 col-sm-7">
                                 <button type="submit" class="btn btn-success">Register</button>
                             </div>
