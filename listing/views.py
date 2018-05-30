@@ -13,6 +13,10 @@ import os
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
 
+def maintenance(request):
+    return render(request, 'listing/maintenance.html')
+
+
 def index(request):
     all_items = Item.objects.all().order_by('-id')
     page = request.GET.get('page', 1)
@@ -214,7 +218,7 @@ def login_user(request):
                 else:
                     return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled.'})
             else:
-                return render(request, 'listing/login.html', {'error_message': 'Invalid login!'})
+                return render(request, 'listing/login.html', {'error_message': 'Invalid login! Forget your password? Please contact us for help.'})
         return render(request, 'listing/login.html')
 
 
