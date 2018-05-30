@@ -7,7 +7,7 @@ app_name = 'listing'
 urlpatterns = [
 
     # maintenance page
-    url(r'^m/$', views.maintenance, name='maintenance'),
+    # url(r'^$', views.maintenance, name='maintenance'),
 
     # /
     url(r'^$', views.index, name='index'),
