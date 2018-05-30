@@ -218,7 +218,7 @@ def login_user(request):
                 else:
                     return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled.'})
             else:
-                return render(request, 'listing/login.html', {'error_message': 'Invalid login! Forget your password? Please contact us for help.'})
+                return render(request, 'listing/login.html', {'error_message': 'Invalid login! Please contact us for help if you forget your password.'})
         return render(request, 'listing/login.html')
 
 
