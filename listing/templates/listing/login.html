@@ -14,13 +14,13 @@
     {% endif %}
 
     <div class="container-fluid">
-        <div style="height: 50px"></div>
+        <div style="height: 80px"></div>
         <div class="row">
             <div class="col-sm-12 col-md-4"></div>
 
 {#            login panel#}
             <div class="col-sm-12 col-md-4">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px">
                     <div class="panel-body">
                         <div style="height: 20px"></div>
                         <form class="form-horizontal" role="form" action="{% url 'listing:login_user'%}" method="post" enctype="multipart/form-data">
@@ -41,6 +41,7 @@
                                     <input id="id_password" maxlength="30" name="password" type="password">
                                 </div>
                             </div>
+                            <div style="height: 20px"></div>
                             <div class="form-group">
                                 <div class="col-sm-offset-5 col-sm-7">
                                     <button type="submit" class="btn btn-success">Log In</button>
@@ -48,10 +49,17 @@
                             </div>
                         </form>
                     </div>
-                    <div class="panel-footer">
-                        <div>By clicking the Log In button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.</div>
-                        <div>Do not have an account yet? <a href="{% url 'listing:register' %}">Click here</a> to register.</div>
-                    </div>
+                    <div style="height: 80px"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+{#            terms and conditions box#}
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <div align="center">
+                    <strong>By clicking the Log In button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>. Do not have an account yet? <a href="{% url 'listing:register' %}">Click here</a> to register.</strong>
                 </div>
             </div>
         </div>
