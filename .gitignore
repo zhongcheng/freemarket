@@ -27,3 +27,6 @@ static/
 !__init__.py
 !0001_initial.py
 !0002_item_time.py
+
+settings.py
+
