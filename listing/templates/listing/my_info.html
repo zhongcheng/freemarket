@@ -1,36 +1,35 @@
 {% extends 'listing/base.html' %}
+
 {% block title %}My Info{% endblock %}
+
 {% block my_info_active %}active{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-3"></div>
 
-{#    <div style="height: 50px"></div>#}
-
-    <div class="row">
-
-        <div class="col-sm-12 col-md-3"></div>
-        <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default" style="border-color: transparent;">
-                <div class="panel-body">
-                    {% if error_message %}
-                        <p align="center" style="color: red"><strong>{{ error_message }}</strong></p>
-                    {% endif %}
-                    <div style="height: 20px"></div>
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% include 'listing/form_template.html' %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-7" style="padding-top: 20px">
-                                <button type="submit" class="btn btn-success">Update</button>
+{#            update info panel#}
+            <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default" style="border-color: transparent;">
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p align="center" style="color: red"><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+                        <div style="height: 20px"></div>
+                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'listing/form_template.html' %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-5 col-sm-7" style="padding-top: 20px">
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-</div>
 {% endblock %}

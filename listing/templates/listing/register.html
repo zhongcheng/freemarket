@@ -1,57 +1,59 @@
 {% extends 'listing/base_visitor.html' %}
+
 {% block title %}REGISTER{% endblock %}
+
 {% block register_active %}active{% endblock %}
 
 {% block body %}
-{% if error_message %}
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      <strong>{{ error_message }}</strong>
-    </div>
-{% endif %}
+{#    alert box#}
+    {% if error_message %}
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong>{{ error_message }}</strong>
+        </div>
+    {% endif %}
 
-<div class="container-fluid">
+    <div class="container-fluid">
+        <div style="height: 50px"></div>
+        <div class="row">
+            <div class="col-sm-12 col-md-3"></div>
 
-    <div style="height: 50px"></div>
-
-    <div class="row">
-
-        <div class="col-sm-12 col-md-3"></div>
-        <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-body">
-{#                    <h3><p class="text-center">REGISTER</p></h3>#}
-                    <div style="height: 20px"></div>
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% include 'listing/form_template.html' %}
-                        <div class="form-group">
-                            <div style="height: 100px"></div>
-                            <script src='https://www.google.com/recaptcha/api.js'></script>
-                            <div align="center" class="g-recaptcha" data-sitekey="6Lce-1gUAAAAADVCcNOwXkdtQZBCzWVCI3KeRI92"></div>
-                            <div style="height: 55px"></div>
-                            <div class="col-sm-offset-5 col-sm-7">
-                                <button type="submit" class="btn btn-success">Register</button>
+{#            register panel#}
+            <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="height: 20px"></div>
+                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'listing/form_template.html' %}
+                            <div class="form-group">
+                                <div style="height: 100px"></div>
+                                <script src='https://www.google.com/recaptcha/api.js'></script>
+                                <div align="center" class="g-recaptcha" data-sitekey="6Lce-1gUAAAAADVCcNOwXkdtQZBCzWVCI3KeRI92"></div>
+                                <div style="height: 55px"></div>
+                                <div class="col-sm-offset-5 col-sm-7">
+                                    <button type="submit" class="btn btn-success">Register</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="panel-footer">
+                        <div>By clicking the Register button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.</div>
+                        <div>Already have an account? <a href="{% url 'listing:login_user' %}">Click here</a> to log in.</div>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                    <div>By clicking the Register button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.</div>
-                    <div>Already have an account? <a href="{% url 'listing:login_user' %}">Click here</a> to log in.</div>
-                </div>
+            </div>
+        </div>
+
+        <div style="height: 50px"></div>
+
+{#        intro video#}
+        <div class="row">
+            <div class="col-md-12" style="position:relative;padding-top:56.25%;">
+                <iframe src="https://www.youtube.com/embed/huMGZXCTCjc?rel=0&amp;autoplay=1&mute=1" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
             </div>
         </div>
 
     </div>
 
-    <div style="height: 50px"></div>
-
-    <div class="row">
-        <div class="col-md-12" style="position:relative;padding-top:56.25%;">
-            <iframe src="https://www.youtube.com/embed/huMGZXCTCjc?rel=0&amp;autoplay=1&mute=1" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-        </div>
-    </div>
-
-</div>
 {% endblock %}

@@ -54,7 +54,6 @@ def detail(request, item_id):
     if not request.user.is_authenticated:
         return redirect('listing:login_user')
     else:
-        # user = request.user
         item = get_object_or_404(Item, pk=item_id)
         return render(request, 'listing/detail.html', {'item': item})
 
@@ -88,7 +87,6 @@ def add_item(request):
 def my_items(request):
     if not request.user.is_authenticated:
         return redirect('listing:login_user')
-        # return render(request, 'listing/login.html')
     else:
         items = Item.objects.filter(user=request.user)
         return render(request, 'listing/my_items.html', {'items': items})
@@ -213,8 +211,6 @@ def login_user(request):
                 if user.is_active:
                     login(request, user)
                     return redirect('listing:index')
-                    # items = Item.objects.all().order_by('-id')[:54]
-                    # return render(request, 'listing/index.html', {'items': items})
                 else:
                     return render(request, 'listing/login.html', {'error_message': 'Your account has been disabled.'})
             else:

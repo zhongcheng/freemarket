@@ -2,94 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+{#    set the image displayed when sharing site link on social media#}
     <meta property="og:image" content="https://www.free-market.nl/media/ogimage.jpg">
+{#    auto display adjustment based on device screen width#}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{#    set web tab name#}
     <title>{% block title %}Free Market{% endblock %}</title>
-    {% load staticfiles %}
-    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{% static 'listing/style.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'listing/style.css' %}"/>
+
+{#    set favicon#}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+
+{#    script for infinite scroll#}
     <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
     <script src="{% static 'js/infinite.min.js' %}"></script>
+
+{#    for preload bar#}
     <script src="{% static 'js/pace.min.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'listing/preload.css' %}">
+
     <style>
-    .alert {
-        background-color: #f44336;
-        color: white;
-        border-radius: 0;
-        opacity: 1;
-        transition: opacity 2s;
-    }
+{#        alert box style#}
+        .alert {
+            background-color: #f44336;
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+        }
 
-    .closebtn {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 2s;
-    }
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 2s;
+        }
 
-    .closebtn:hover {
-        color: #7d7d7d;
-    }
+        .closebtn:hover {
+            color: #7d7d7d;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse" style="margin-bottom: 10px">
-    <div class="container-fluid">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+        <div class="container-fluid">
+{#            header#}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'listing:index' %}">Free Market</a>
+            </div>
 
-        <!-- Header -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'listing:index' %}">Free Market</a>
+{#            buttons on the right side#}
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="{% block login_active %}{% endblock %}">
+                        <a href="{% url 'listing:login_user' %}">Log In</a>
+                    </li>
+                    <li class="{% block register_active %}{% endblock %}">
+                        <a href="{% url 'listing:register' %}">Register</a>
+                    </li>
+                    <li class="">
+                        <a href="https://www.facebook.com/messages/t/freemarket.nl.2017" target="_blank">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contact us
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <!-- Items -->
-        <div class="collapse navbar-collapse" id="topNavBar">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="{% block login_active %}{% endblock %}">
-                    <a href="{% url 'listing:login_user' %}">Log In</a>
-                </li>
-                <li class="{% block register_active %}{% endblock %}">
-                    <a href="{% url 'listing:register' %}">Register</a>
-                </li>
-                <li class="">
-                    <a href="https://www.facebook.com/messages/t/freemarket.nl.2017" target="_blank">
-                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contact us
-                    </a>
-{#                    <a href="https://www.facebook.com/messages/t/freemarket.nl.2017">Contact us</a>#}
-                </li>
-            </ul>
-        </div>
+    {% block body %}{% endblock %}
 
-    </div>
-</nav>
-{% block body %}
-{% endblock %}
+{#    script to change button transition duration#}
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
 
-<script>
-var close = document.getElementsByClassName("closebtn");
-var i;
-
-for (i = 0; i < close.length; i++) {
-    close[i].onclick = function(){
-        var div = this.parentElement;
-        div.style.opacity = "0";
-        setTimeout(function(){ div.style.display = "none"; }, 2000);
-    }
-}
-</script>
-
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>

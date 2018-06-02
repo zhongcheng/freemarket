@@ -6,7 +6,9 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
 
-# need to update database (migrate) when change the structure of a class
+# do not forget to update database (migrate) after changing the structure of a class
+
+
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=20)

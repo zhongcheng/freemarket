@@ -11,6 +11,7 @@ class ItemForm(forms.ModelForm):
         fields = ['item_name', 'description', 'city', 'contact_info', 'photo']
 
 
+# not used
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 

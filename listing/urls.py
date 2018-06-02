@@ -9,7 +9,7 @@ urlpatterns = [
     # maintenance page
     # url(r'^$', views.maintenance, name='maintenance'),
 
-    # /
+    # HOME PAGE
     url(r'^$', views.index, name='index'),
 
     # /register/
