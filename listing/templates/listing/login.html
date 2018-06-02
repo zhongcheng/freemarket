@@ -20,7 +20,7 @@
 
 {#            login panel#}
             <div class="col-sm-12 col-md-4">
-                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px">
+                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
                     <div class="panel-body">
                         <div style="height: 20px"></div>
                         <form class="form-horizontal" role="form" action="{% url 'listing:login_user'%}" method="post" enctype="multipart/form-data">
@@ -49,19 +49,17 @@
                             </div>
                         </form>
                     </div>
-                    <div style="height: 80px"></div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-{#            terms and conditions box#}
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <div align="center">
-                    <strong>By clicking the Log In button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>. Do not have an account yet? <a href="{% url 'listing:register' %}">Click here</a> to register.</strong>
-                </div>
-            </div>
+    </div>
+
+{#    terms and conditions box#}
+    <div class="alert alert-bottom" style="margin-bottom: 0px">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <div align="center">
+            <strong>By clicking the Log In button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>. Do not have an account yet? <a href="{% url 'listing:register' %}">Click here</a> to register.</strong>
         </div>
     </div>
 

@@ -85,3 +85,10 @@
     border-color: chartreuse;
 }
 
+
+/*locate alert box at the bottom of a page*/
+.alert-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
