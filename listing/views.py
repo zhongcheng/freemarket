@@ -72,7 +72,7 @@ def add_item(request):
             if file_type not in IMAGE_FILE_TYPES:
                 context = {
                     'form': form,
-                    'error_message': 'Image file type must be PNG, JPG, or JPEG',
+                    'error_message': 'Image file type must be PNG, JPG or JPEG',
                 }
                 return render(request, 'listing/add_item.html', context)
             item.photo_width, item.photo_height = get_image_dimensions(item.photo)
@@ -107,7 +107,7 @@ def update_item(request, item_id):
                 if file_type not in IMAGE_FILE_TYPES:
                     context = {
                         'form': form,
-                        'error_message': 'Image file type must be PNG, JPG, or JPEG',
+                        'error_message': 'Image file type must be PNG, JPG or JPEG',
                     }
                     return render(request, 'listing/update_item.html', context)
                 item.photo_width, item.photo_height = get_image_dimensions(item.photo)
