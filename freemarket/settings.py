@@ -25,6 +25,9 @@ SECURE_SSL_REDIRECT = True
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lce-1gUAAAAAEAEhHhMZh9o8Un4tTM5ziXBd8Ti'
 SOCIAL_AUTH_FACEBOOK_KEY = '444826255982696'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd0ede1a2748aaeb94a026434683ab055'  # App Secret
+SOCIAL_AUTH_GITHUB_KEY = '27bcdb5999b2f5b242da'
+SOCIAL_AUTH_GITHUB_SECRET = '573ae62ca2d5742e541647176843476918bb064e'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -141,6 +144,7 @@ TEMPLATE_LOADERS = (
 
 
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
