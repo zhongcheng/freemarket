@@ -23,6 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@*zna1%n2te2xnbz))^wr2!kb_qpc3v(9@rl#kg_rc4bgi5(+7'
 SECURE_SSL_REDIRECT = True
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lce-1gUAAAAAEAEhHhMZh9o8Un4tTM5ziXBd8Ti'
+SOCIAL_AUTH_FACEBOOK_KEY = '444826255982696'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd0ede1a2748aaeb94a026434683ab055'  # App Secret
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'freemarket.urls'
@@ -65,6 +71,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -129,3 +138,14 @@ MEDIA_URL = '/media/'
 TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.load_template_source',
 )
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_URL = 'listing:login_user'
+LOGOUT_URL = 'listing:logout_user'
+LOGIN_REDIRECT_URL = 'listing:index'
