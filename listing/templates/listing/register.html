@@ -46,7 +46,9 @@
             <div class="alert" style="margin-bottom: 0px">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <div align="center">
-                    <strong>By clicking the Register button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>. Already have an account? <a href="{% url 'listing:login_user' %}">Click here</a> to log in.</strong>
+                    <strong>By clicking the Register button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.
+                        Already have an account? <a href="{% url 'listing:login_user' %}">Click here</a> to log in.
+                        You could also log in with <a href="{% url 'social:begin' 'github' %}">GitHub</a> or <a href="{% url 'social:begin' 'facebook' %}">Facebook</a> account.</strong>
                 </div>
             </div>
 
