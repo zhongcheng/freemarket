@@ -191,7 +191,7 @@ def my_info(request):
         context = {
             "form": form,
         }
-        return resnder(request, 'listing/my_info.html', context)
+        return render(request, 'listing/my_info.html', context)
 
 
 def logout_user(request):
