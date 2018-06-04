@@ -14,14 +14,14 @@
     {% endif %}
 
     <div class="container-fluid">
-        <div style="height: 80px"></div>
+        <div style="height: 60px"></div>
         <div class="row">
             <div class="col-sm-12 col-md-4"></div>
 
 {#            login panel#}
             <div class="col-sm-12 col-md-4">
                 <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
-                    <div class="panel-body">
+                    <div class="panel-body" style="padding: 50px">
                         <div style="height: 20px"></div>
                         <form class="form-horizontal" role="form" action="{% url 'listing:login_user'%}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
