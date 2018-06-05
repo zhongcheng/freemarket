@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@*zna1%n2te2xnbz))^wr2!kb_qpc3v(9@rl#kg_rc4bgi5(+7'
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lce-1gUAAAAAEAEhHhMZh9o8Un4tTM5ziXBd8Ti'
 SOCIAL_AUTH_FACEBOOK_KEY = '444826255982696'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd0ede1a2748aaeb94a026434683ab055'  # App Secret
