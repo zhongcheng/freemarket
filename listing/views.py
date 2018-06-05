@@ -51,10 +51,10 @@ def index(request):
 
 
 def detail(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
     if not request.user.is_authenticated:
-        return redirect('listing:login_user')
+        return render(request, 'listing/detail_visitor.html', {'item': item})
     else:
-        item = get_object_or_404(Item, pk=item_id)
         return render(request, 'listing/detail.html', {'item': item})
 
 
