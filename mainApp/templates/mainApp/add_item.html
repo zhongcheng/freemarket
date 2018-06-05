@@ -1,0 +1,40 @@
+{% extends 'mainApp/base.html' %}
+
+{% block title %}Add a New Item{% endblock %}
+
+{% block add_item_active %}active{% endblock %}
+
+{% block body %}
+{#    alert box#}
+    {% if error_message %}
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong>{{ error_message }}</strong>
+        </div>
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-2"></div>
+
+{#            add item panel#}
+            <div class="col-sm-12 col-md-8">
+                <div class="panel panel-default" style="border-color: transparent;">
+                    <div class="panel-body">
+                        <div style="height: 20px"></div>
+                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'mainApp/form_template.html' %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-5 col-sm-7" style="padding-top: 20px">
+                                    <button type="submit" class="btn btn-success"><strong>Add a New Item</strong></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

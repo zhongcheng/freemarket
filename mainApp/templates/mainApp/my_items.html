@@ -1,0 +1,50 @@
+{% extends 'mainApp/base.html' %}
+
+{% block title %}My Items{% endblock %}
+
+{% block my_items_active %}active{% endblock %}
+
+{% block body %}
+    <div style="height: 10px"></div>
+
+{#    items#}
+    <div class="items-container container-fluid">
+        <div class="row">
+            {% if items %}
+                {% for item in items reversed %}
+                    <div class="col-sm-4 col-lg-2" style="padding-left: 5px;padding-right: 5px">
+                        <div class="thumbnail" style="padding:0px;margin-bottom: 10px">
+                            <div class="image">
+                                <a href="{% url 'mainApp:detail' item.id %}">
+                                    {% if item.photo_width > item.photo_height %}
+                                        <img src="{{ item.photo.url }}" class="img-responsive landscape">
+                                    {% else %}
+                                        <img src="{{ item.photo.url }}" class="img-responsive portrait">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="caption" style="padding-top: 0px">
+                                <h3>{{ item.item_name }} <small>{{ item.city }}</small></h3>
+
+{#                                item update button#}
+                                <a href="{% url 'mainApp:update_item' item.id %}" class="btn btn-default btn-sm" role="button">Update</a>
+
+{#                                item delete button#}
+                                <form action="{% url 'mainApp:delete_item' item.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="item_id" value="{{ item.id }}" />
+                                    <button type="submit" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
