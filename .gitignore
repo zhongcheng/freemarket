@@ -12,9 +12,9 @@ db.sqlite3
 
 # Compiled source code
 freemarket/__pycache__/
-listing/__pycache__/
-listing/migrations/__pycache__/
-listing/templatetags/__pycache__/
+mainApp/__pycache__/
+mainApp/migrations/__pycache__/
+mainApp/templatetags/__pycache__/
 
 .idea/
 
