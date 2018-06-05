@@ -24,7 +24,7 @@ freemarket/urls.py
 
 # Created by collectstatic
 static/
-!listing/static/
+!mainApp/static/
 
 # Migration history
 000*

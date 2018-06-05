@@ -1,0 +1,94 @@
+/* change navbar background color-style */
+.navbar{
+    border-radius: 0;
+    background-color: chartreuse;
+    border: chartreuse;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
+    background-color: chartreuse;
+}
+
+
+/* change navbar toggle button color-style */
+.navbar-inverse .navbar-toggle {
+    border-color: chartreuse;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: chartreuse;
+    border-color: white;
+}
+
+
+/* change navbar line color-style */
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: chartreuse;
+}
+
+
+/* resize and crop thumbnail image */
+.image {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+.image img.portrait {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.image img.landscape {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: translate(-50%,-50%);
+}
+
+
+/* center and resize detail page image */
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+/* button color-style */
+.btn {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 2s;
+}
+
+.btn-success {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+
+.btn-success:focus {
+    color: white;
+    background-color: chartreuse;
+    border-color: chartreuse;
+}
+
+
+/*locate alert box at the bottom of a page*/
+.alert-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
