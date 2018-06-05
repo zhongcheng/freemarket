@@ -28,6 +28,6 @@ static/
 !0001_initial.py
 !0002_item_time.py
 
-freemarket/settings.py
-freemarket/urls.py
+settings.py
+urls.py
 
