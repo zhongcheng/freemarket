@@ -19,8 +19,8 @@ listing/templatetags/__pycache__/
 .idea/
 
 # sensitive
-settings.py
-urls.py
+freemarket/settings.py
+freemarket/urls.py
 
 # Created by collectstatic
 static/
