@@ -27,8 +27,8 @@ urlpatterns = [
     # /<item_id>/detail/
     url(r'^(?P<item_id>[0-9]+)/detail/$', views.detail, name='detail'),
 
-    # /add_item/
-    url(r'^add_item/$', views.add_item, name='add_item'),
+    # /post/
+    url(r'^post/$', views.add_item, name='add_item'),
 
     # /my_item/
     url(r'^my_items/$', views.my_items, name='my_items'),
