@@ -59,8 +59,9 @@
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <div align="center">
             <strong>By clicking the Log In button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.
-                Do not have an account yet? <a href="{% url 'mainApp:register' %}">Click here</a> to register or log in with <a href="{% url 'social:begin' 'github' %}">GitHub</a> or
-                <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>.</strong>
+                Do not have an account yet? <a href="{% url 'mainApp:register' %}">Click here</a> to register or log in with <a href="{% url 'social:begin' 'github' %}">GitHub</a>,
+                <a href="{% url 'social:begin' 'facebook' %}">Facebook</a> or
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Google</a> account.</strong>
         </div>
     </div>
 
