@@ -8,6 +8,7 @@ db.sqlite3
 *.jpeg
 *.JPEG
 !ogimage.jpg
+!ogimage.png
 !maintenance.png
 
 # Compiled source code
