@@ -14,7 +14,7 @@ class Item(models.Model):
     item_name = models.CharField(max_length=20)
     description = models.TextField(max_length=500, blank=True)
     city = models.CharField(max_length=20)
-    contact_info = models.CharField(max_length=50)
+    contact_info = models.TextField(max_length=200)
     photo = models.FileField()
     time = models.DateField(auto_now=True)
     photo_width = models.IntegerField(null=True)
