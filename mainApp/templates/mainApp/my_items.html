@@ -5,12 +5,12 @@
 {% block my_items_active %}active{% endblock %}
 
 {% block body %}
-    <div style="height: 10px"></div>
 
 {#    items#}
     <div class="items-container container-fluid">
         <div class="row">
             {% if items %}
+                <div style="height: 10px"></div>
                 {% for item in items reversed %}
                     <div class="col-sm-4 col-lg-2" style="padding-left: 5px;padding-right: 5px">
                         <div class="thumbnail" style="padding:0px;margin-bottom: 10px">
@@ -43,6 +43,13 @@
                     </div>
                     {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
                 {% endfor %}
+            {% else %}
+                <div class="alert3">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  <div align="center">
+                    <strong>At the moment, you do not have any listed items.</strong>
+                  </div>
+                </div>
             {% endif %}
         </div>
     </div>

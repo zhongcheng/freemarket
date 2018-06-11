@@ -48,10 +48,11 @@
             <div class="alert2" style="margin-bottom: 0px">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <div align="center">
-                    <strong>By clicking the Register button, we consider you accept our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>
+                    <strong>By using this site you agree to our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>
                         (<a href="https://player.youku.com/embed/XMzY1Mzg4NjU5Ng==?rel=0&amp;autoplay=1&mute=1" target="_blank">中国大陆</a>).
                         Already have an account? <a href="{% url 'mainApp:login_user' %}">Click here</a> to log in.
-                        You could also log in with <a href="{% url 'social:begin' 'github' %}">GitHub</a>,
+                        You could also log in with
+{#                        <a href="{% url 'social:begin' 'github' %}">GitHub</a>,#}
                         <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>,
                         <a href="{% url 'social:begin' 'google-oauth2' %}">Google</a> or
                         <a href="{% url 'social:begin' 'weibo' %}">Weibo</a> account.</strong>

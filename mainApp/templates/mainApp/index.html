@@ -6,7 +6,11 @@
     <div class="alert3">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       <div align="center">
-        <strong>Please only post free offers.</strong>
+          {% if items %}
+              <strong>Please only post free offers.</strong>
+          {% else %}
+              <strong>At the moment, there are no items offered from your city.</strong>
+          {% endif %}
       </div>
     </div>
 
