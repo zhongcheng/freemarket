@@ -38,13 +38,14 @@ class Item(models.Model):
 @receiver(post_save, sender=Item, dispatch_uid="update_item_photo")
 def auto_rotate_photo(sender, instance, **kwargs):
     if instance.photo:
-        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        image_path = BASE_DIR + instance.photo.url
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = base_dir + instance.photo.url
         try:
             image = Image.open(image_path)
             for orientation in ExifTags.TAGS.keys():
                 if ExifTags.TAGS[orientation] == 'Orientation':
                     break
+
             exif = dict(image._getexif().items())
 
             if exif[orientation] == 3:
