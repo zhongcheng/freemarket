@@ -4,8 +4,8 @@
     <div style="height: 10px"></div>
 
 {#    items#}
-    <div class="infinite-container container-fluid">
-        <div class="row">
+    <div class="infinite-container container-fluid" style="padding-left: 0px;padding-right: 0px">
+{#        <div class="row">#}
             {% if items %}
                 {% for item in items %}
                     <div class="col-sm-4 col-lg-2 infinite-item" style="padding-left: 5px;padding-right: 5px">
@@ -28,7 +28,7 @@
                     {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
                 {% endfor %}
             {% endif %}
-        </div>
+{#        </div>#}
     </div>
 
 {#    load more#}
@@ -42,5 +42,7 @@
             element: $('.infinite-container')[0]
         });
     </script>
+
+    <div style="height: 30px"></div>
 
 {% endblock %}
