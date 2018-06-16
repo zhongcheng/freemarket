@@ -98,7 +98,6 @@ def update_item(request, item_id):
     else:
         item = Item.objects.get(pk=item_id)
         photo_old = item.photo
-        photo_old_size = item.photo.size
         if item.user == request.user:
             form = ItemForm(request.POST or None, request.FILES or None, instance=item)
             if form.is_valid():
@@ -111,13 +110,13 @@ def update_item(request, item_id):
                     }
                     return render(request, 'mainApp/update_item.html', context)
                 item.photo_width, item.photo_height = get_image_dimensions(item.photo)
-                if photo_old == item.photo and photo_old_size == item.photo.size:
-                    item.save()
-                else:
-                    item.compress_image_save()
-                    image_path = settings.MEDIA_ROOT + '/' + photo_old.name
-                    if os.path.isfile(image_path):
-                        os.remove(image_path)
+                item.compress_image_save()
+
+                # remove the old photo file
+                image_path = settings.MEDIA_ROOT + '/' + photo_old.name
+                if os.path.isfile(image_path):
+                    os.remove(image_path)
+
                 return render(request, 'mainApp/detail.html', {'item': item})
             context = {
                 "form": form,
@@ -132,10 +131,7 @@ def delete_item(request, item_id):
     else:
         item = Item.objects.get(pk=item_id)
         if item.user == request.user:
-            image_path = settings.MEDIA_ROOT + '/' + item.photo.name
             item.delete()
-            if os.path.isfile(image_path):
-                os.remove(image_path)
         items = Item.objects.filter(user=request.user)
         return render(request, 'mainApp/my_items.html', {'items': items})
 

@@ -4,6 +4,8 @@ from PIL import Image, ExifTags
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
+from django.db.models.signals import post_delete
+from django.dispatch.dispatcher import receiver
 
 
 # do not forget to update database (migrate) after changing the structure of a class
@@ -50,4 +52,10 @@ class Item(models.Model):
 
     def __str__(self):
         return self.item_name
+
+
+# remove the corresponding image file after deleting an Item object
+@receiver(post_delete, sender=Item)
+def item_photo_file_delete(sender, instance, **kwargs):
+    instance.photo.delete(False)
 
