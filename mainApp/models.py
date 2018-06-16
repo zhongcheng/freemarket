@@ -4,9 +4,6 @@ from PIL import Image, ExifTags
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
-import os
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 
 
 # do not forget to update database (migrate) after changing the structure of a class
@@ -25,6 +22,26 @@ class Item(models.Model):
 
     def compress_image_save(self):
         img = Image.open(self.photo)
+
+        # auto rotate image based on EXIF data
+        try:
+            for orientation in ExifTags.TAGS.keys():
+                if ExifTags.TAGS[orientation] == 'Orientation':
+                    break
+
+            exif = dict(img._getexif().items())
+
+            if exif[orientation] == 3:
+                img = img.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                img = img.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                img = img.rotate(90, expand=True)
+
+        except (AttributeError, KeyError, IndexError):
+            # cases: image don't have getexif
+            pass
+
         output = BytesIO()
         img.save(output, format='JPEG', quality=30)
         output.seek(0)
@@ -33,30 +50,4 @@ class Item(models.Model):
 
     def __str__(self):
         return self.item_name
-
-
-@receiver(post_save, sender=Item, dispatch_uid="update_item_photo")
-def auto_rotate_photo(sender, instance, **kwargs):
-    if instance.photo:
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        image_path = base_dir + instance.photo.url
-        try:
-            image = Image.open(image_path)
-            for orientation in ExifTags.TAGS.keys():
-                if ExifTags.TAGS[orientation] == 'Orientation':
-                    break
-
-            exif = dict(image._getexif().items())
-
-            if exif[orientation] == 3:
-                image = image.rotate(180, expand=True)
-            elif exif[orientation] == 6:
-                image = image.rotate(270, expand=True)
-            elif exif[orientation] == 8:
-                image = image.rotate(90, expand=True)
-            image.save(image_path)
-            image.close()
-        except (AttributeError, KeyError, IndexError):
-            # cases: image don't have getexif
-            pass
 
