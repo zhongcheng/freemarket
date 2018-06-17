@@ -23,7 +23,7 @@
 
 /* change navbar line color-style */
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: chartreuse;
+    border-color: white;
 }
 
 
@@ -117,6 +117,7 @@
 }
 
 
+/*navbar style when collapsed*/
 @media (max-width: 1490px) {
     .navbar-header {
         float: none;
@@ -152,6 +153,10 @@
     }
     .collapse.in{
         display:block !important;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: white;
     }
 
     .navbar-nav .open .dropdown-menu {

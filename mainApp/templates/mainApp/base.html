@@ -94,7 +94,7 @@
 {#                </ul>#}
 
 {#                search bar#}
-                <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'mainApp:index' %}">
+                <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'mainApp:index' %}" style="border: 0px; padding-top: 20px">
                     <div class="form-group">
                         <input placeholder="type your city's precise name here" type="text" class="form-control" name="q" value="{{ request.GET.q }}" style="width: 280px">
                     </div>
