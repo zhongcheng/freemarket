@@ -159,6 +159,10 @@
         color: white;
     }
 
+    .navbar-form {
+        padding-top: 20px;
+    }
+
     .navbar-nav .open .dropdown-menu {
         position: static;
         float: none;
