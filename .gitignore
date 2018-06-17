@@ -7,7 +7,6 @@ db.sqlite3
 *.JPG
 *.jpeg
 *.JPEG
-!ogimage.jpg
 !ogimage.png
 !maintenance.png
 
