@@ -9,6 +9,12 @@ db.sqlite3
 *.JPEG
 !ogimage.png
 !maintenance.png
+!fb.png
+!weibo.png
+!google.png
+!wechat.png
+!git.png
+!youtube.png
 
 # Compiled source code
 freemarket/__pycache__/
