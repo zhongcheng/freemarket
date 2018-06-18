@@ -5,14 +5,6 @@
 {% block login_active %}active{% endblock %}
 
 {% block body %}
-{#    alert box#}
-    {% if error_message %}
-        <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <strong>{{ error_message }}</strong>
-        </div>
-    {% endif %}
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-4"></div>
@@ -22,31 +14,19 @@
                 <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
                     <div class="panel-body" style="padding: 50px">
                         <div style="height: 20px"></div>
-                        <form class="form-horizontal" role="form" action="{% url 'mainApp:login_user'%}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label class="control-label col-sm-5" for="id_username">
-                                    Username:
-                                </label>
-                                <div class="col-sm-7">
-                                    <input id="id_username" maxlength="30" name="username" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5" for="id_password">
-                                    Password:
-                                </label>
-                                <div class="col-sm-7">
-                                    <input id="id_password" maxlength="30" name="password" type="password">
-                                </div>
-                            </div>
-                            <div style="height: 20px"></div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-7">
-                                    <button type="submit" class="btn btn-success"><strong>Log In</strong></button>
-                                </div>
-                            </div>
-                        </form>
+
+
+
+
+                        <div class="container">
+                            <a href="https://www.facebook.com/100005543231545">
+                                <img src="https://www.free-market.nl/static/maintenance.png" class="socialimage">
+                                <div class="overlay"></div>
+                            </a>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
