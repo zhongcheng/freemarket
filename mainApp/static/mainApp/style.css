@@ -118,7 +118,7 @@
 
 
 /*navbar style when collapsed*/
-@media (max-width: 1490px) {
+@media (max-width: 1400px) {
     .navbar-header {
         float: none;
     }
