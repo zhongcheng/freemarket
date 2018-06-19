@@ -51,6 +51,15 @@
             padding: 15px;
         }
 
+        .alert3 {
+            background-color: #9fff90;
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+            padding: 5px;
+        }
+
         .closebtn {
             margin-left: 15px;
             color: white;
@@ -86,18 +95,18 @@
             right: 0;
             height: 100%;
             width: 100%;
-            opacity: 0;
+            opacity: 0.5;
             transition: 3s ease;
             background-color: white;
         }
 
         .container:hover .overlay {
-            opacity: 0.5;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px">
         <div class="container-fluid">
 {#            header#}
             <div class="navbar-header">
@@ -115,13 +124,10 @@
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="{% block login_active %}{% endblock %}">
-                        <a href="{% url 'mainApp:login_user' %}"><strong>Log In</strong></a>
+                        <a href="{% url 'mainApp:login_user' %}"><strong>Login</strong></a>
                     </li>
                     <li class="">
                         <a href="https://www.youtube.com/embed/v_wPRJwBaAM?rel=0&autoplay=1" target="_blank"><strong>About</strong></a>
-                    </li>
-                    <li class="{% block register_active %}{% endblock %}">
-                        <a href="{% url 'mainApp:register' %}"><strong>Register</strong></a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -137,6 +143,8 @@
             </div>
         </div>
     </nav>
+
+    <div style="height: 50px"></div>
 
     {% block body %}{% endblock %}
 

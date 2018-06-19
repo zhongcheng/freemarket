@@ -12,12 +12,6 @@ urlpatterns = [
     # HOME PAGE
     url(r'^$', views.index, name='index'),
 
-    # /register/
-    url(r'^register/$', check_recaptcha(views.register), name='register'),
-
-    # /my_info/
-    url(r'^my_info/$', views.my_info, name='my_info'),
-
     # /login_user/
     url(r'^login_user/$', views.login_user, name='login_user'),
 

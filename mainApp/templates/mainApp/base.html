@@ -69,7 +69,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px">
         <div class="container-fluid">
 {#            header#}
             <div class="navbar-header">
@@ -118,11 +118,6 @@
                             <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp;<strong>My Items</strong>
                         </a>
                     </li>
-                    <li class="{% block my_info_active %}{% endblock %}">
-                        <a href="{% url 'mainApp:my_info' %}">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<strong>My Info</strong>
-                        </a>
-                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; <strong>Contact us</strong>
@@ -142,6 +137,8 @@
             </div>
         </div>
     </nav>
+
+    <div style="height: 50px"></div>
 
     {% block body %}{% endblock %}
 
