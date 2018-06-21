@@ -7,7 +7,7 @@
         <div class="alert3">
           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
           <div align="center">
-              <strong>At the moment, there are no items offered from your city.</strong>
+              <strong>At the moment, there are no items offered from {{ request.GET.q }}.</strong>
           </div>
         </div>
     {% endif %}
