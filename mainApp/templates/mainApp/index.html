@@ -10,6 +10,13 @@
               <strong>At the moment, there are no items offered from {{ request.GET.q }}.</strong>
           </div>
         </div>
+    {% else %}
+        <div class="alert4">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <div align="center">
+              <strong>Please let us know if you have any suggestions so that we could improve this website and make it simpler, faster and smarter.</strong>
+          </div>
+        </div>
     {% endif %}
 
     <div style="height: 10px"></div>
