@@ -5,17 +5,17 @@
 {% block my_items_active %}active{% endblock %}
 
 {% block body %}
-    <div class="alert3">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      <div align="center">
-              <strong>After giving out your item, please do not forget to remove your post (take your contact info offline).</strong>
-      </div>
-    </div>
 
 {#    items#}
     <div class="items-container container-fluid">
         <div class="row">
             {% if items %}
+                <div class="alert3">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  <div align="center">
+                          <strong>After giving out your item, please do not forget to remove your post (take your contact info offline).</strong>
+                  </div>
+                </div>
                 <div style="height: 10px"></div>
                 {% for item in items reversed %}
                     <div class="col-sm-4 col-lg-2" style="padding-left: 5px;padding-right: 5px">
