@@ -104,15 +104,27 @@
 {#            buttons on the right side#}
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="{% block login_active %}{% endblock %}">
-                        <a href="{% url 'mainApp:login_user' %}"><strong>Log In</strong></a>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <strong>Log In</strong>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'social:begin' 'google-oauth2' %}"><strong>Google</strong></a></li>
+                            <li><a href="{% url 'social:begin' 'facebook' %}"><strong>Facebook</strong></a></li>
+                            <li><a href="{% url 'mainApp:login_user' %}"><strong>Free Market</strong></a></li>
+                        </ul>
                     </li>
+{#                    <li class="{% block login_active %}{% endblock %}">#}
+{#                        <a href="{% url 'mainApp:login_user' %}"><strong>Log In</strong></a>#}
+{#                    </li>#}
                     <li class="">
-                        <a href="https://www.youtube.com/embed/LHVRxpQpkxo?rel=0&autoplay=1&loop=1&playlist=LHVRxpQpkxo" target="_blank"><strong>About</strong></a>
+{#                        <a href="https://www.youtube.com/embed/LHVRxpQpkxo?rel=0&autoplay=1&loop=1&playlist=LHVRxpQpkxo" target="_blank"><strong>About</strong></a>#}
+                        <a href="{% url 'mainApp:about' %}"><strong>About</strong></a>
                     </li>
-                    <li class="{% block register_active %}{% endblock %}">
-                        <a href="{% url 'mainApp:register' %}"><strong>Register</strong></a>
-                    </li>
+{#                    <li class="{% block register_active %}{% endblock %}">#}
+{#                        <a href="{% url 'mainApp:register' %}"><strong>Register</strong></a>#}
+{#                    </li>#}
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; <strong>Contact us</strong>

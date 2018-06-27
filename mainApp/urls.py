@@ -39,4 +39,10 @@ urlpatterns = [
     # /<item_id>/delete_item/
     url(r'^(?P<item_id>[0-9]+)/delete_item/$', views.delete_item, name='delete_item'),
 
+    # /terms/
+    url(r'^terms/$', views.terms, name='terms'),
+
+    # /about/
+    url(r'^about/$', views.about, name='about'),
+
 ]

@@ -92,6 +92,14 @@ def my_items(request):
         return render(request, 'mainApp/my_items.html', {'items': items})
 
 
+def terms(request):
+    return render(request, 'mainApp/terms.html')
+
+
+def about(request):
+    return render(request, 'mainApp/about.html')
+
+
 def update_item(request, item_id):
     if not request.user.is_authenticated:
         return redirect('mainApp:login_user')

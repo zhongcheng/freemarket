@@ -1,0 +1,22 @@
+{% extends 'mainApp/base_visitor.html' %}
+
+{% block ogimage %}<meta property="og:image" content="{{ item.photo.url }}">{% endblock %}
+
+{% block title %}Terms and Conditions{% endblock %}
+
+{% block body %}
+    <div style="height: 20px"></div>
+
+    <div class="container-fluid items-container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" style="padding-left: 5px;padding-right: 5px">
+                <h1 align="center" style="font-weight: bold">Terms and Conditions</h1><br><br>
+                <strong style="font-size: medium">&#8226 We are not responsible for the posts from users who give out illegal objects, such as drugs, guns or tanks.</strong><br><br>
+                <strong style="font-size: medium">&#8226 We reserve the rights to remove any post that contains improper content.</strong><br><br>
+                <strong style="font-size: medium">&#8226 We only use user info for account administration purposes.</strong>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
