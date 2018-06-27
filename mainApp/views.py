@@ -37,7 +37,7 @@ def index(request):
         if query:
             found_items = all_items.filter(
                 Q(city__iexact=query)
-            ).distinct().order_by('-id')
+            ).distinct()
             page = request.GET.get('page', 1)
             paginator = Paginator(found_items, 18)
             try:
