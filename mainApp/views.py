@@ -93,11 +93,19 @@ def my_items(request):
 
 
 def terms(request):
-    return render(request, 'mainApp/terms.html')
+    if request.user.is_authenticated:
+        base_template_name = 'mainApp/base.html'
+    else:
+        base_template_name = 'mainApp/base_visitor.html'
+    return render(request, 'mainApp/terms.html', {'base_template_name': base_template_name})
 
 
 def about(request):
-    return render(request, 'mainApp/about.html')
+    if request.user.is_authenticated:
+        base_template_name = 'mainApp/base.html'
+    else:
+        base_template_name = 'mainApp/base_visitor.html'
+    return render(request, 'mainApp/about.html', {'base_template_name': base_template_name})
 
 
 def update_item(request, item_id):

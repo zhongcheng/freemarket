@@ -1,5 +1,7 @@
 {% extends 'mainApp/base.html' %}
 
+{% block ogimage %}<meta property="og:image" content="{{ item.photo.url }}">{% endblock %}
+
 {% load url_target_blank %}
 
 {% block title %}
