@@ -5,70 +5,95 @@
 {% block login_active %}active{% endblock %}
 
 {% block body %}
-{#    alert box#}
-    {% if error_message %}
-        <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <strong>{{ error_message }}</strong>
-        </div>
-    {% endif %}
+    <div class="alert3">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <div align="center">
+              <strong>Please choose your login method below.</strong>
+      </div>
+    </div>
+
+    <div style="height: 50px"></div>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-4"></div>
+            <div class="col-lg-2"></div>
 
-{#            login panel#}
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-6 col-md-3 col-lg-2" style="padding: 0px">
                 <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
-                    <div class="panel-body" style="padding: 50px">
-                        <div style="height: 20px"></div>
-                        <form class="form-horizontal" role="form" action="{% url 'mainApp:login_user'%}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label class="control-label col-sm-5" for="id_username">
-                                    Username:
-                                </label>
-                                <div class="col-sm-7">
-                                    <input id="id_username" maxlength="30" name="username" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5" for="id_password">
-                                    Password:
-                                </label>
-                                <div class="col-sm-7">
-                                    <input id="id_password" maxlength="30" name="password" type="password">
-                                </div>
-                            </div>
-                            <div style="height: 20px"></div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-7">
-                                    <button type="submit" class="btn btn-success"><strong>Log In</strong></button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="panel-body" style="padding: 30px">
+                        <div class="container">
+                            <a href="{% url 'social:begin' 'facebook' %}">
+                                <img src="https://www.free-market.nl/static/social_icons/fb.png" class="socialimage">
+                                <div class="overlay"></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <div class="col-sm-6 col-md-3 col-lg-2" style="padding: 0px">
+                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
+                    <div class="panel-body" style="padding: 30px">
+                        <div class="container">
+                            <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                <img src="https://www.free-market.nl/static/social_icons/google.png" class="socialimage">
+                                <div class="overlay"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 col-lg-2" style="padding: 0px">
+                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
+                    <div class="panel-body" style="padding: 30px">
+                        <div class="container">
+                            <a href="{% url 'social:begin' 'weibo' %}">
+                                <img src="https://www.free-market.nl/static/social_icons/fm.png" class="socialimage">
+                                <div class="overlay"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{#            <div class="col-sm-6 col-md-3 col-lg-2" style="padding: 0px">#}
+{#                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">#}
+{#                    <div class="panel-body" style="padding: 30px">#}
+{#                        <div class="container">#}
+{#                            <a href="{% url 'social:begin' 'weibo' %}">#}
+{#                                <img src="https://www.free-market.nl/static/social_icons/weibo.png" class="socialimage">#}
+{#                                <div class="overlay"></div>#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="col-sm-6 col-md-3 col-lg-2" style="padding: 0px">#}
+{#                <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">#}
+{#                    <div class="panel-body" style="padding: 30px">#}
+{#                        <div class="container">#}
+{#                            <a href="{% url 'social:begin' 'github' %}">#}
+{#                                <img src="https://www.free-market.nl/static/social_icons/git.png" class="socialimage">#}
+{#                                <div class="overlay"></div>#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+        </div>
     </div>
 
+    <div style="height: 100px"></div>
+
 {#    terms and conditions box#}
-    <div class="alert2 alert-bottom" style="margin-bottom: 0px">
+    <div class="alert2 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <div align="center">
-{#            <strong>By using this site you agree to our <a href="https://www.youtube.com/embed/K7j3RZYlNWw?rel=0&amp;autoplay=1&loop=1&playlist=K7j3RZYlNWw" target="_blank">Terms and Conditions</a>.#}
-            <strong>By using this site you agree to our <a href="{% url 'mainApp:terms' %}" target="_blank">Terms and Conditions</a>.
-{#                (<a href="https://player.youku.com/embed/XMzY1Mzg4NjU5Ng==?rel=0&amp;autoplay=1&mute=1" target="_blank">中国大陆</a>).#}
-                Do not have an account yet? <a href="{% url 'mainApp:register' %}">Click here</a> to register or log in with
-{#                <a href="{% url 'social:begin' 'github' %}">GitHub</a>,#}
-                <a href="{% url 'social:begin' 'facebook' %}">Facebook</a> or
-                <a href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
-{#                <a href="{% url 'social:begin' 'weibo' %}">Weibo</a>#}
-                account.</strong>
+            <strong>By using this site you agree to our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.</strong>
         </div>
     </div>
 
 {% endblock %}
-

@@ -18,6 +18,9 @@ urlpatterns = [
     # /my_info/
     url(r'^my_info/$', views.my_info, name='my_info'),
 
+    # /login/
+    url(r'^login/$', views.login_main, name='login'),
+
     # /login_user/
     url(r'^login_user/$', views.login_user, name='login_user'),
 

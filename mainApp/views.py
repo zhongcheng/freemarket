@@ -206,9 +206,11 @@ def my_info(request):
         return render(request, 'mainApp/my_info.html', context)
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('mainApp:index')
+def login_main(request):
+    if request.user.is_authenticated:
+        return redirect('mainApp:index')
+    else:
+        return render(request, 'mainApp/login.html')
 
 
 def login_user(request):
@@ -224,11 +226,15 @@ def login_user(request):
                     login(request, user)
                     return redirect('mainApp:index')
                 else:
-                    return render(request, 'mainApp/login.html', {'error_message': 'Your account has been disabled.'})
+                    return render(request, 'mainApp/login_user.html', {'error_message': 'Your account has been disabled.'})
             else:
-                return render(request, 'mainApp/login.html', {'error_message': 'Invalid login! Please contact us for help if you forget your password.'})
-        return render(request, 'mainApp/login.html')
+                return render(request, 'mainApp/login_user.html', {'error_message': 'Invalid login! Please contact us for help if you forget your password.'})
+        return render(request, 'mainApp/login_user.html')
 
+
+def logout_user(request):
+    logout(request)
+    return redirect('mainApp:index')
 
 
 
