@@ -48,7 +48,7 @@
                 <div class="panel panel-default" style="border-color: transparent; margin-bottom: 0px; box-shadow: none">
                     <div class="panel-body" style="padding: 30px">
                         <div class="container">
-                            <a href="{% url 'social:begin' 'weibo' %}">
+                            <a href="{% url 'mainApp:login_user' %}">
                                 <img src="https://www.free-market.nl/static/social_icons/fm.png" class="socialimage">
                                 <div class="overlay"></div>
                             </a>
@@ -92,7 +92,7 @@
     <div class="alert2 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <div align="center">
-            <strong>By using this site you agree to our <a href="https://www.youtube.com/embed/AeToRwKLErY?rel=0&amp;autoplay=1" target="_blank">Terms and Conditions</a>.</strong>
+            <strong>By using this site you agree to our <a href="{% url 'mainApp:terms' %}" target="_blank">Terms and Conditions</a>.
         </div>
     </div>
 

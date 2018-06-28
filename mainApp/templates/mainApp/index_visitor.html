@@ -11,7 +11,7 @@
                     <div class="col-sm-4 col-lg-2 infinite-item" style="padding-left: 5px;padding-right: 5px">
                         <div class="thumbnail" style="padding: 0px;margin-bottom: 10px">
                             <div class="image">
-                                <a href="{% url 'mainApp:login_user' %}">
+                                <a href="{% url 'mainApp:login' %}">
                                     {% if item.photo_width > item.photo_height %}
                                         <img src="{{ item.photo.url }}" class="img-responsive landscape">
                                     {% else %}
