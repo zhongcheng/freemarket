@@ -20,7 +20,11 @@
                 {% for item in items reversed %}
                     <div class="col-sm-4 col-lg-2" style="padding-left: 5px;padding-right: 5px">
                         <div class="thumbnail" style="padding:0px;margin-bottom: 10px">
-                            <div class="image">
+                            {% if item.availability %}
+                                <div class="image">
+                            {% else %}
+                                <div class="image" style="opacity: 0.3">
+                            {% endif %}
                                 <a href="{% url 'mainApp:detail' item.id %}">
                                     {% if item.photo_width > item.photo_height %}
                                         <img src="{{ item.photo.url }}" class="img-responsive landscape">
@@ -34,6 +38,12 @@
 
 {#                                item update button#}
                                 <a href="{% url 'mainApp:update_item' item.id %}" class="btn btn-default btn-sm" role="button">Update</a>
+
+                                {% if item.availability %}
+                                    <a href="{% url 'mainApp:item_unavailable' item.id %}" class="btn btn-default btn-sm" role="button">Mark Unavailable</a>
+                                {% else %}
+                                    <a href="{% url 'mainApp:item_available' item.id %}" class="btn btn-default btn-sm" role="button">Mark Available</a>
+                                {% endif %}
 
 {#                                item delete button#}
                                 <form action="{% url 'mainApp:delete_item' item.id %}" method="post" style="display: inline;">

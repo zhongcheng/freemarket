@@ -42,6 +42,12 @@ urlpatterns = [
     # /<item_id>/delete_item/
     url(r'^(?P<item_id>[0-9]+)/delete_item/$', views.delete_item, name='delete_item'),
 
+    # /<item_id>/item_available/
+    url(r'^(?P<item_id>[0-9]+)/item_available/$', views.item_available, name='item_available'),
+
+    # /<item_id>/item_unavailable/
+    url(r'^(?P<item_id>[0-9]+)/item_unavailable/$', views.item_unavailable, name='item_unavailable'),
+
     # /terms/
     url(r'^terms/$', views.terms, name='terms'),
 

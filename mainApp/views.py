@@ -152,6 +152,30 @@ def delete_item(request, item_id):
         return render(request, 'mainApp/my_items.html', {'items': items})
 
 
+def item_available(request, item_id):
+    if not request.user.is_authenticated:
+        return redirect('mainApp:login_user')
+    else:
+        item = Item.objects.get(pk=item_id)
+        if item.user == request.user:
+            item.availability = 1
+            item.save()
+        items = Item.objects.filter(user=request.user)
+        return render(request, 'mainApp/my_items.html', {'items': items})
+
+
+def item_unavailable(request, item_id):
+    if not request.user.is_authenticated:
+        return redirect('mainApp:login_user')
+    else:
+        item = Item.objects.get(pk=item_id)
+        if item.user == request.user:
+            item.availability = 0
+            item.save()
+        items = Item.objects.filter(user=request.user)
+        return render(request, 'mainApp/my_items.html', {'items': items})
+
+
 def register(request):
     if request.user.is_authenticated:
         return redirect('mainApp:index')

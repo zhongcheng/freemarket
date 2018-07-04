@@ -21,6 +21,7 @@ class Item(models.Model):
     time = models.DateField(auto_now=True)
     photo_width = models.IntegerField(null=True)
     photo_height = models.IntegerField(null=True)
+    availability = models.IntegerField(default=1)
 
     def compress_image_save(self):
         img = Image.open(self.photo)
