@@ -27,7 +27,8 @@
                                 <img src="{{ item.photo.url }}" class="img-responsive center">
                             {% endif %}
                         </a>
-                        <h2 style="padding-left:10px; padding-right:10px; overflow: hidden">{{ item.item_name }} <small>{{ item.city }}</small></h2>
+                        <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px">{{ item.item_name }}</h2>
+                        <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px"><small>{{ item.city }}, {{item.time}}</small></h2>
                         <p style="font-size: 14px; padding-left:10px; padding-right:5px; overflow: hidden; line-height: 20px">{{ item.description }}</p>
                         <h5 style="padding-left:10px; overflow: hidden"><strong>Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
                     </div>
