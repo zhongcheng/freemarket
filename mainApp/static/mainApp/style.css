@@ -27,6 +27,16 @@
 }
 
 
+/*  change navbar font color */
+.navbar-inverse .navbar-nav>li>a {
+        color: limegreen;
+}
+
+.navbar-inverse .navbar-brand {
+        color: limegreen;
+}
+
+
 /* modify navbar dropdown menu style */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
     background-color: chartreuse;
@@ -40,7 +50,7 @@
 }
 
 .dropdown-menu>li>a {
-    color: #9d9d9d;
+    color: limegreen;
     padding: 5px 30px;
 }
 
@@ -157,6 +167,10 @@
 
     .navbar-inverse .navbar-brand {
         color: white;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+        color: limegreen;
     }
 
     .navbar-form {
