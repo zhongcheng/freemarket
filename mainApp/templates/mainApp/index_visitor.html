@@ -44,7 +44,7 @@
 
 {#    load more#}
     {% if items.has_next %}
-        <a class="infinite-more-link" href="?page={{ items.next_page_number }}"></a>
+        <a class="infinite-more-link" href="?q={{ request.GET.q }}&page={{ items.next_page_number }}"></a>
     {% endif %}
 
 {#    script for infinite scroll#}
