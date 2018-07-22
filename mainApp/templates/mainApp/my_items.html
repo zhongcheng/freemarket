@@ -34,7 +34,7 @@
                                 <a href="{% url 'mainApp:update_item' item.id %}" class="btn btn-default btn-sm" role="button">Update</a>
 
                                 {% if item.availability %}
-                                    <a href="{% url 'mainApp:item_unavailable' item.id %}" class="btn btn-default btn-sm" role="button">Mark Unavailable</a>
+                                    <a href="{% url 'mainApp:item_unavailable' item.id %}" class="btn btn-default btn-sm" role="button">Mark Reserved</a>
                                 {% else %}
                                     <a href="{% url 'mainApp:item_available' item.id %}" class="btn btn-default btn-sm" role="button">Mark Available</a>
                                 {% endif %}
