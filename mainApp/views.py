@@ -19,34 +19,35 @@ def maintenance(request):
 
 def index(request):
     all_items = Item.objects.all().order_by('-id')
-    page = request.GET.get('page', 1)
-    paginator = Paginator(all_items, 18)
-    try:
-        items = paginator.page(page)
-    except PageNotAnInteger:
-        items = paginator.page(1)
-    except EmptyPage:
-        items = paginator.page(paginator.num_pages)
+
+    # if a search is applied
+    query = request.GET.get("q")
+    if query:
+        found_items = all_items.filter(
+            Q(city__iexact=query)
+        ).distinct()
+        page = request.GET.get('page', 1)
+        paginator = Paginator(found_items, 18)
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            items = paginator.page(1)
+        except EmptyPage:
+            items = paginator.page(paginator.num_pages)
+    else:
+        page = request.GET.get('page', 1)
+        paginator = Paginator(all_items, 18)
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            items = paginator.page(1)
+        except EmptyPage:
+            items = paginator.page(paginator.num_pages)
 
     if not request.user.is_authenticated:
         return render(request, 'mainApp/index_visitor.html', {'items': items})
     else:
         user = request.user
-        # if a search is applied
-        query = request.GET.get("q")
-        if query:
-            found_items = all_items.filter(
-                Q(city__iexact=query)
-            ).distinct()
-            page = request.GET.get('page', 1)
-            paginator = Paginator(found_items, 18)
-            try:
-                items = paginator.page(page)
-            except PageNotAnInteger:
-                items = paginator.page(1)
-            except EmptyPage:
-                items = paginator.page(paginator.num_pages)
-
         return render(request, 'mainApp/index.html', {'items': items, 'user': user})
 
 

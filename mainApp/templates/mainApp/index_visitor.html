@@ -1,6 +1,16 @@
 {% extends 'mainApp/base_visitor.html' %}
 
 {% block body %}
+    {% if not items %}
+        <div class="alert3">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <div align="center">
+              <strong>At the moment, there are no items offered from {{ request.GET.q }}.</strong>
+          </div>
+        </div>
+        <div style="height: 700px"></div>
+    {% endif %}
+
     <div style="height: 10px"></div>
 
 {#    items#}
@@ -44,7 +54,7 @@
         });
     </script>
 
-    <div style="height: 30px"></div>
+    <div style="height: 50px"></div>
 
     {#    terms and conditions box#}
     <div class="alert2 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
