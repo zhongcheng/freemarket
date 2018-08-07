@@ -17,6 +17,14 @@ def maintenance(request):
     return render(request, 'mainApp/maintenance.html')
 
 
+def donate(request):
+    if request.user.is_authenticated:
+        base_template_name = 'mainApp/base.html'
+    else:
+        base_template_name = 'mainApp/base_visitor.html'
+    return render(request, 'mainApp/donate.html', {'base_template_name': base_template_name})
+
+
 def index(request):
     all_items = Item.objects.all().order_by('-id')
 
