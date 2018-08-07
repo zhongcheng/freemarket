@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 {#    set the image displayed when sharing site link on social media#}
-    <meta property="og:image" content="https://www.free-market.nl/media/ogimage.png">
+    {% block ogimage %}<meta property="og:image" content="https://www.free-market.nl/media/ogimage.png">{% endblock %}
 {#    auto display adjustment based on device screen width#}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {#    set web tab name#}
@@ -332,6 +332,7 @@
             "Leiden",
             "Maastricht",
             "Rotterdam","Rijswijk",
+            "Tilburg",
             "Utrecht",
             "Valkenswaard",
 {#            België#}
@@ -383,6 +384,8 @@
             "Los Angeles","Las Vegas",
             "New York",
             "San Diego","San Francisco",
+{#            Zwitserland#}
+            "Zurich",
 {#            China#}
             "Beijing",
             "Chengdu",
@@ -409,6 +412,7 @@
             "Köln",
             "München",
             "Torino",
+            "Zürich",
             "杭州"
         ];
 
