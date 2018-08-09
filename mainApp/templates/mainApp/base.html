@@ -162,6 +162,11 @@
 
 {#                buttons on the right side#}
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="{% block donate_active %}{% endblock %}">
+                        <a href="https://donorbox.org/keep-free-market-alive">
+                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp;<strong> Donation</strong>
+                        </a>
+                    </li>
                     <li class="{% block items_active %}{% endblock %}">
                         <a href="{% url 'mainApp:index' %}">
                             <span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;<strong>Items Offered Worldwide</strong>
@@ -184,7 +189,7 @@
 {#                    </li>#}
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; <strong>Contact us</strong>
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;<strong>Contact us</strong>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
