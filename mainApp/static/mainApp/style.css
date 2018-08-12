@@ -1,22 +1,22 @@
 /* change navbar background color-style */
 .navbar{
     border-radius: 0;
-    background-color: chartreuse;
-    border: chartreuse;
+    background-color: #72ce10;
+    border: #72ce10;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
-    background-color: chartreuse;
+    background-color: #72ce10;
 }
 
 
 /* change navbar toggle button color-style */
 .navbar-inverse .navbar-toggle {
-    border-color: chartreuse;
+    border-color: #72ce10;
 }
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: chartreuse;
+    background-color: #72ce10;
     border-color: white;
 }
 
@@ -29,17 +29,17 @@
 
 /*  change navbar font color */
 .navbar-inverse .navbar-nav>li>a {
-        color: limegreen;
+        color: green;
 }
 
 .navbar-inverse .navbar-brand {
-        color: limegreen;
+        color: green;
 }
 
 
 /* modify navbar dropdown menu style */
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
-    background-color: chartreuse;
+    background-color: #72ce10;
 }
 
 .dropdown-menu {
@@ -50,13 +50,13 @@
 }
 
 .dropdown-menu>li>a {
-    color: limegreen;
+    color: green;
     padding: 5px 30px;
 }
 
 .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
     background-color: white;
-    color: chartreuse;
+    color: #72ce10;
 }
 
 
@@ -102,20 +102,20 @@
 
 .btn-success {
     color: white;
-    background-color: chartreuse;
-    border-color: chartreuse;
+    background-color: #72ce10;
+    border-color: #72ce10;
 }
 
 .btn-success:hover {
     color: white;
-    background-color: chartreuse;
-    border-color: chartreuse;
+    background-color: #72ce10;
+    border-color: #72ce10;
 }
 
 .btn-success:focus {
     color: white;
-    background-color: chartreuse;
-    border-color: chartreuse;
+    background-color: #72ce10;
+    border-color: #72ce10;
 }
 
 
@@ -170,7 +170,7 @@
     }
 
     .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-        color: limegreen;
+        color: green;
     }
 
     .navbar-form {
@@ -189,7 +189,7 @@
     }
 
     .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
-        background-color: chartreuse;
+        background-color: #72ce10;
         color: white;
     }
 
