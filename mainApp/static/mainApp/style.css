@@ -204,4 +204,5 @@ pre {
     border: white;
     padding: 0px;
     white-space: pre-wrap;
+    word-break: keep-all;
 }
