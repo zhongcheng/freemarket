@@ -10,7 +10,7 @@ urlpatterns = [
     # url(r'^$', views.maintenance, name='maintenance'),
 
     # donate page
-    url(r'^donate/$', views.donate, name='donate'),
+    # url(r'^donate/$', views.donate, name='donate'),
 
     # HOME PAGE
     url(r'^$', views.index, name='index'),
