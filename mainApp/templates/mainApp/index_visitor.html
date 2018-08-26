@@ -31,7 +31,10 @@
                                 </a>
                             </div>
                             <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
-                                <h5><big><strong>{{ item.item_name }}</strong></big>&nbsp-&nbsp<a href="{% url 'mainApp:detail' item.id %}">See Details</a></h5>
+                                <h5>
+                                    <span class="makeleft"><big><strong>{{ item.item_name }}</strong></big></span>
+                                    <span class="makeright"><a href="{% url 'mainApp:detail' item.id %}">See Details</a></span>
+                                </h5><br>
                                 <h5>{{ item.city }}, {{ item.time }}</h5>
                             </div>
                         </div>
