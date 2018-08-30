@@ -36,7 +36,6 @@
                                 </a>
                             </div>
                             <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
-                                <!--<h5><big><strong>{{ item.item_name }}</strong></big>&nbsp-&nbsp<a href="{% url 'mainApp:detail' item.id %}">See Details</a></h5>-->
                                 <h5>
                                     <span class="makeleft"><big><strong>{{ item.item_name }}</strong></big></span>
                                     <span class="makeright"><a href="{% url 'mainApp:detail' item.id %}">See Details</a></span>
@@ -56,7 +55,10 @@
 {#                            </a>#}
 {#                        </div>#}
 {#                        <div class="caption" style="padding-bottom: 0px;padding-top: 0px">#}
-{#                            <h3>This is an ad.</h3>#}
+{#                            <h5>#}
+{#                                <span class="makeleft"><big><strong>This is an ad.</strong></big></span>#}
+{#                                <span class="makeright"><a href="">See Details</a></span>#}
+{#                            </h5><br>#}
 {#                            <h5>Sponsored</h5>#}
 {#                        </div>#}
 {#                    </div>#}
