@@ -35,7 +35,7 @@ def index(request):
             Q(city__icontains=query)
         ).distinct()
         page = request.GET.get('page', 1)
-        paginator = Paginator(found_items, 18)
+        paginator = Paginator(found_items, 72)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
@@ -44,7 +44,7 @@ def index(request):
             items = paginator.page(paginator.num_pages)
     else:
         page = request.GET.get('page', 1)
-        paginator = Paginator(all_items, 18)
+        paginator = Paginator(all_items, 72)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
