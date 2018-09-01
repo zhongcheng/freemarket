@@ -26,8 +26,7 @@ def donate(request):
 
 
 def index(request):
-    item_count_diff = Item.objects.count() - index.item_count
-    all_items = Item.objects.all().order_by('-id')[item_count_diff:index.item_count]
+    all_items = Item.objects.all().order_by('-id')
 
     # if a search is applied
     query = request.GET.get("q")
@@ -58,7 +57,6 @@ def index(request):
     else:
         user = request.user
         return render(request, 'mainApp/index.html', {'items': items, 'user': user})
-index.item_count = Item.objects.count()
 
 
 def detail(request, item_id):
