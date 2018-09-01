@@ -60,3 +60,16 @@ class Item(models.Model):
 def item_photo_file_delete(sender, instance, **kwargs):
     instance.photo.delete(False)
 
+
+class Ad(models.Model):
+    city = models.CharField(max_length=20)
+    title = models.CharField(max_length=20)
+    url = models.TextField(max_length=200)
+    photo = models.FileField()
+    time = models.DateField(auto_now_add=True)
+    last_update = models.DateField(auto_now=True)
+    memo = models.TextField(max_length=500, blank=True)
+
+    def __str__(self):
+        return self.city
+
