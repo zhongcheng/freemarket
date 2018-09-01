@@ -26,7 +26,8 @@ def donate(request):
 
 
 def index(request):
-    all_items = Item.objects.all().order_by('-id')
+    item_count_diff = Item.objects.count() - index.item_count
+    all_items = Item.objects.all().order_by('-id')[item_count_diff:index.item_count]
 
     # if a search is applied
     query = request.GET.get("q")
@@ -35,7 +36,7 @@ def index(request):
             Q(city__icontains=query)
         ).distinct()
         page = request.GET.get('page', 1)
-        paginator = Paginator(found_items, 72)
+        paginator = Paginator(found_items, 18)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
@@ -44,7 +45,7 @@ def index(request):
             items = paginator.page(paginator.num_pages)
     else:
         page = request.GET.get('page', 1)
-        paginator = Paginator(all_items, 72)
+        paginator = Paginator(all_items, 18)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
@@ -57,6 +58,7 @@ def index(request):
     else:
         user = request.user
         return render(request, 'mainApp/index.html', {'items': items, 'user': user})
+index.item_count = Item.objects.count()
 
 
 def detail(request, item_id):
