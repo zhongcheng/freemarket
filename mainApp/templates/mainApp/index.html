@@ -49,22 +49,24 @@
                     {% cycle '' '' '' '<div class="clearfix visible-lg"></div>' %}
                 {% endfor %}
 
-                <div class="col-sm-6 col-md-4 col-lg-3 infinite-item" style="padding-left: 5px;padding-right: 5px">
-                    <div class="thumbnail" style="padding: 0px;margin-bottom: 10px">
-                        <div class="image">
-                            <a href="https://donorbox.org/free-market" target="_blank">
-                                <img src="https://www.free-market.nl/static/ogimage.png" class="img-responsive landscape">
-                            </a>
-                        </div>
-                        <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
-                            <h5>
-                                <span class="makeleft"><big><strong>Donate to support us</strong></big></span>
-                                <span class="makeright"><a href="https://donorbox.org/free-market" target="_blank">See Details</a></span>
-                            </h5><br>
-                            <h5>Team Free Market</h5>
+                {% if ad %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 infinite-item" style="padding-left: 5px;padding-right: 5px">
+                        <div class="thumbnail" style="padding: 0px;margin-bottom: 10px">
+                            <div class="image">
+                                <a href="{{ ad.url }}" target="_blank">
+                                    <img src="{{ ad.photo.url }}" class="img-responsive landscape">
+                                </a>
+                            </div>
+                            <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
+                                <h5>
+                                    <span class="makeleft"><big><strong>{{ ad.title }}</strong></big></span>
+                                    <span class="makeright"><a href="{{ ad.url }}" target="_blank">See Details</a></span>
+                                </h5><br>
+                                <h5>Sponsored</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
 
             {% endif %}
 {#        </div>#}

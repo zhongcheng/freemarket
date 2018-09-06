@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .forms import ItemForm, RegistrationForm
-from .models import Item
+from .models import Item, Ad
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.images import get_image_dimensions
 from django.conf import settings
@@ -27,10 +27,18 @@ def donate(request):
 
 def index(request):
     all_items = Item.objects.all().order_by('-id')
+    all_ads = Ad.objects.all()
 
     # if a search is applied
     query = request.GET.get("q")
     if query:
+        found_ads = all_ads.filter(
+            Q(city__iexact=query)
+        ).distinct()
+        if found_ads.count():
+            ad = found_ads[0]
+        else:
+            ad = 0
         found_items = all_items.filter(
             Q(city__icontains=query)
         ).distinct()
@@ -43,6 +51,10 @@ def index(request):
         except EmptyPage:
             items = paginator.page(paginator.num_pages)
     else:
+        found_ads = all_ads.filter(
+            Q(city__iexact='global')
+        ).distinct()
+        ad = found_ads[0]
         page = request.GET.get('page', 1)
         paginator = Paginator(all_items, 47)
         try:
@@ -53,10 +65,10 @@ def index(request):
             items = paginator.page(paginator.num_pages)
 
     if not request.user.is_authenticated:
-        return render(request, 'mainApp/index_visitor.html', {'items': items})
+        return render(request, 'mainApp/index_visitor.html', {'items': items, 'ad': ad})
     else:
         user = request.user
-        return render(request, 'mainApp/index.html', {'items': items, 'user': user})
+        return render(request, 'mainApp/index.html', {'items': items, 'ad': ad, 'user': user})
 
 
 def detail(request, item_id):
