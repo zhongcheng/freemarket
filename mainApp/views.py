@@ -54,7 +54,10 @@ def index(request):
         found_ads = all_ads.filter(
             Q(city__iexact='global')
         ).distinct()
-        ad = found_ads[0]
+        if found_ads.count():
+            ad = found_ads[0]
+        else:
+            ad = 0
         page = request.GET.get('page', 1)
         paginator = Paginator(all_items, 47)
         try:
