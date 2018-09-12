@@ -46,7 +46,7 @@ class Item(models.Model):
             pass
 
         output = BytesIO()
-        img.save(output, format='JPEG', quality=30)
+        img.save(output, format='JPEG', quality=40)
         output.seek(0)
         self.photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.photo.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
         super(Item, self).save()
