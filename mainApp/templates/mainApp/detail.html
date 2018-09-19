@@ -31,6 +31,12 @@
                         <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px"><small>{{ item.city }}, {{item.time}}</small></h2>
                         <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px">{{ item.description|urlize|url_target_blank }}</pre>
                         <h5 style="padding-left:10px; overflow: hidden"><strong>Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
+                        <div style="height: 10px"></div>
+                        <div style="padding-left: 10px; padding-bottom: 10px" class="fb-share-button" data-href="https://www.free-market.nl/{{ item.id }}/detail/" data-layout="button" data-size="small" data-mobile-iframe="true">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.free-market.nl%2F%28%3FP%253Citem_id%253E%255B0-9%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                Share
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
