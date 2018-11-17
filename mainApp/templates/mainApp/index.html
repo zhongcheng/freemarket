@@ -12,7 +12,6 @@
               <strong>At the moment, there are no items offered from {{ request.GET.q }}.</strong>
           </div>
         </div>
-        <div style="height: 700px"></div>
     {% endif %}
 
     <div style="padding-left: 10px;padding-right: 10px">
@@ -22,7 +21,7 @@
                 <a href="https://www.free-market.nl/?q=amsterdam">Amsterdam</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=berlin">Berlin</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=copenhagen">Copenhagen</a> <a>|</a>
-{#                <a href="https://www.free-market.nl/?q=delft">Delft</a>#}
+                <a href="https://www.free-market.nl/?q=delft">Delft</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=den+haag">Den Haag</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=eindhoven">Eindhoven</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=groningen">Groningen</a> <a>|</a>
@@ -31,6 +30,10 @@
             </span>
         </h5>
     </div>
+
+    {% if not items %}
+        <div style="height: 700px"></div>
+    {% endif %}
 
 {#    items#}
     <div class="infinite-container container-fluid" style="padding-left: 0px;padding-right: 0px">
