@@ -9,3 +9,9 @@ Run the command below at project root directory in case static files are not pro
 
     pythonX.Y manage.py collectstatic
 
+
+#### Commands for testing offline
+    pythonX.Y manage.py makemigrations
+    pythonX.Y manage.py migrate
+    pythonX.Y manage.py createsuperuser
+    pythonX.Y manage.py runserver

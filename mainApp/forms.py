@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Item
+from .models import Item, Profile
 
 
 class ItemForm(forms.ModelForm):
@@ -9,6 +9,21 @@ class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ['item_name', 'description', 'city', 'contact_info', 'photo']
+
+
+# form for add item page
+class ItemFormForAdd(forms.ModelForm):
+
+    class Meta:
+        model = Item
+        fields = ['photo', 'item_name', 'description']
+
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['city', 'contact_info']
 
 
 # not used

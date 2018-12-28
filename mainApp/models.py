@@ -8,9 +8,6 @@ from django.db.models.signals import post_delete
 from django.dispatch.dispatcher import receiver
 
 
-# do not forget to update database (migrate) after changing the structure of a class
-
-
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=20)
@@ -73,3 +70,11 @@ class Ad(models.Model):
     def __str__(self):
         return self.city
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    city = models.CharField(max_length=20)
+    contact_info = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.contact_info

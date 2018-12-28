@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from .forms import ItemForm, RegistrationForm
-from .models import Item, Ad
+from .forms import ItemForm, RegistrationForm, ProfileForm, ItemFormForAdd
+from .models import Item, Ad, Profile
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.images import get_image_dimensions
 from django.conf import settings
@@ -43,7 +43,7 @@ def index(request):
             Q(city__icontains=query)
         ).distinct()
         page = request.GET.get('page', 1)
-        paginator = Paginator(found_items, 48)
+        paginator = Paginator(found_items, 36)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
@@ -59,7 +59,7 @@ def index(request):
         else:
             ad = 0
         page = request.GET.get('page', 1)
-        paginator = Paginator(all_items, 47)
+        paginator = Paginator(all_items, 35)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
@@ -83,27 +83,59 @@ def detail(request, item_id):
 
 
 def add_item(request):
+    all_profiles = Profile.objects.all()
+
     if not request.user.is_authenticated:
         return redirect('mainApp:login_user')
     else:
-        form = ItemForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
+        # search for user's profile
+        found_profile = all_profiles.filter(
+            Q(user__exact=request.user)
+        ).distinct()
+
+        form = ItemFormForAdd(request.POST or None, request.FILES or None)
+        # check if user's profile already exists, if yea, load the instance
+        if found_profile.count():
+            profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=found_profile[0])
+        else:
+            profile_form = ProfileForm(request.POST or None, request.FILES or None)
+
+        if form.is_valid() and profile_form.is_valid():
+            # create an item instance
             item = form.save(commit=False)
+
             item.user = request.user
+            # check if user's profile already exists, if not, create a profile instance
+            if found_profile.count():
+                profile = found_profile[0]
+            else:
+                profile = profile_form.save(commit=False)
+
+                profile.user = request.user
+            # get item city and contact info from the profile form
+            item.city = profile_form.cleaned_data['city']
+            item.contact_info = profile_form.cleaned_data['contact_info']
+
             item.photo = request.FILES['photo']
             file_type = item.photo.url.split('.')[-1]
             file_type = file_type.lower()
             if file_type not in IMAGE_FILE_TYPES:
                 context = {
                     'form': form,
+                    'profile_form': profile_form,
                     'error_message': 'Image file type must be PNG, JPG or JPEG',
                 }
                 return render(request, 'mainApp/add_item.html', context)
             item.photo_width, item.photo_height = get_image_dimensions(item.photo)
             item.compress_image_save()
+            # save/update profile instance
+            profile_form.save(commit=True)
+
             return render(request, 'mainApp/detail.html', {'item': item})
+        # if any form is not valid.
         context = {
-            "form": form,
+            'form': form,
+            'profile_form': profile_form
         }
         return render(request, 'mainApp/add_item.html', context)
 
