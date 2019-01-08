@@ -29,11 +29,11 @@
 
 /*  change navbar font color */
 .navbar-inverse .navbar-nav>li>a {
-        color: green;
+        color: #336600;
 }
 
 .navbar-inverse .navbar-brand {
-        color: green;
+        color: #336600;
 }
 
 
@@ -50,7 +50,7 @@
 }
 
 .dropdown-menu>li>a {
-    color: green;
+    color: #336600;
     padding: 5px 30px;
 }
 
@@ -170,7 +170,7 @@
     }
 
     .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-        color: green;
+        color: #336600;
     }
 
     .navbar-form {
@@ -214,4 +214,10 @@ pre {
 
 .makeright {
     float:right;
+}
+
+/*background image style*/
+#bg {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
