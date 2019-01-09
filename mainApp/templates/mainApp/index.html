@@ -17,7 +17,7 @@
     <div style="padding-left: 10px;padding-right: 10px">
         <h5>
             <span>
-                <strong>Most Listed Cities: </strong>
+                <strong style="color: #336600">Most Listed Cities: </strong>
                 <a href="https://www.free-market.nl/?q=amsterdam">Amsterdam</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=berlin">Berlin</a> <a>|</a>
                 <a href="https://www.free-market.nl/?q=copenhagen">Copenhagen</a> <a>|</a>
@@ -57,10 +57,10 @@
                             </div>
                             <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
                                 <h5>
-                                    <span class="makeleft"><big><strong>{{ item.item_name }}</strong></big></span>
+                                    <span class="makeleft" style="color: #336600"><big><strong>{{ item.item_name }}</strong></big></span>
                                     <span class="makeright"><a href="{% url 'mainApp:detail' item.id %}">See Details</a></span>
                                 </h5><br>
-                                <h5>{{ item.city }}, {{ item.time }}</h5>
+                                <h5 style="color: #336600">{{ item.city }}, {{ item.time }}</h5>
                             </div>
                         </div>
                     </div>
