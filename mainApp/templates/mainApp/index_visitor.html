@@ -53,9 +53,16 @@
                             <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
                                 <h5>
                                     <span class="makeleft" style="color: #336600"><big><strong>{{ item.item_name }}</strong></big></span>
-                                    <span class="makeright"><a href="{% url 'mainApp:detail' item.id %}">See Details</a></span>
+                                    <span class="makeright">
+                                        <form>
+                                            <input class="btn btn-success" style="font-weight: bold; height: 40px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 10px"
+                                                   type="button"
+                                                   value="See Details"
+                                                   onclick="window.location.href='{% url 'mainApp:detail' item.id %}'" />
+                                        </form>
+                                    </span>
                                 </h5><br>
-                                <h5 style="color: #336600">{{ item.city }}, {{ item.time }}</h5>
+                                <h5 style="color: #336600; margin-top: 5px">{{ item.city }}, {{ item.time }}</h5>
                             </div>
                         </div>
                     </div>
