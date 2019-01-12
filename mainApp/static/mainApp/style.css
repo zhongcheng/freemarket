@@ -196,6 +196,13 @@
     .navbar-fixed-top .navbar-collapse {
         max-height: 460px;
     }
+
+    /*background image style*/
+    #bg {
+        background-image: url("https://www.free-market.nl/static/bg_kate_cheng_2.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
 }
 
 /*paragraph display style*/
@@ -216,8 +223,12 @@ pre {
     float:right;
 }
 
-/*background image style*/
-#bg {
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+/*when with pc screen*/
+@media (min-width: 1491px) {
+    /*background image style*/
+    #bg {
+        background-image: url("https://www.free-market.nl/static/bg_kate_cheng.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
 }
