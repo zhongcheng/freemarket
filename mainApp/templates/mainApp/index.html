@@ -84,10 +84,17 @@
                             </div>
                             <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
                                 <h5>
-                                    <span class="makeleft"><big><strong>{{ ad.title }}</strong></big></span>
-                                    <span class="makeright"><a href="{{ ad.url }}" target="_blank">See Details</a></span>
+                                    <span class="makeleft" style="color: #336600"><big><strong>{{ ad.title }}</strong></big></span>
+                                    <span class="makeright">
+                                        <form>
+                                            <input class="btn btn-success" style="font-weight: bold; height: 40px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 10px"
+                                                   type="button"
+                                                   value="See Details"
+                                                   onclick="window.location.href='{{ ad.url }}'" />
+                                        </form>
+                                    </span>
                                 </h5><br>
-                                <h5>Sponsored</h5>
+                                <h5 style="color: #336600; margin-top: 5px">Sponsored</h5>
                             </div>
                         </div>
                     </div>

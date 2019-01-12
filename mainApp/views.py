@@ -59,7 +59,7 @@ def index(request):
         else:
             ad = 0
         page = request.GET.get('page', 1)
-        paginator = Paginator(all_items, 35)
+        paginator = Paginator(all_items, 36)
         try:
             items = paginator.page(page)
         except PageNotAnInteger:
