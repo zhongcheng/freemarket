@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    for Google domain ownership verification#}
+    <meta name="google-site-verification" content="eciKYktdNEq-oIWpHQFqQhvlF8R3a_XFIa626OLLQ0E" />
+{#    for Weibo domain verification#}
+    <meta property="wb:webmaster" content="df9bdc681e2dae2c" />
+{#    set the image displayed when sharing site link on social media#}
+    {% block ogimage %}<meta property="og:image" content="https://www.free-market.nl/media/ogimage.png">{% endblock %}
+    {% block ogdescription %}{% endblock %}
+{#    auto display adjustment based on device screen width#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{#    set web tab name#}
+    <title>{% block title %}Free Market{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mainApp/style.css' %}"/>
+
+{#    set favicon#}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+
+{#    script for infinite scroll#}
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
+
+{#    for preload bar#}
+    <script src="{% static 'js/pace.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'mainApp/preload.css' %}">
+
+    <style>
+{#        alert box style#}
+        .alert {
+            background-color: #f44336;
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+            padding: 10px;
+        }
+
+        .alert2 {
+            background: linear-gradient(to right, #72ce10 0%, #9fff90 100%);
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+            padding: 15px;
+        }
+
+        .alert3 {
+            background: linear-gradient(to right, #72ce10 0%, #9fff90 100%);
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+            padding: 5px;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 2s;
+        }
+
+        .closebtn:hover {
+            color: #7d7d7d;
+        }
+
+{#        social login button style#}
+        .container {
+            position: relative;
+            width: 50%;
+        }
+        .socialimage {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0.5;
+            transition: 3s ease;
+            background-color: white;
+        }
+        .container:hover .overlay {
+            opacity: 0;
+        }
+
+{#        for autocomplete#}
+        .autocomplete {
+            /*the container must be positioned relative:*/
+            position: relative;
+            display: inline-block;
+        }
+        .autocomplete-items {
+            position: absolute;
+            z-index: 99;
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+            color: #9d9d9d;
+            box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        }
+        .autocomplete-items div {
+            padding: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+        .autocomplete-items div:hover {
+            /*when hovering an item:*/
+            background-color: white;
+        }
+        .autocomplete-active {
+            /*when navigating through the items using the arrow keys:*/
+            background-color: white !important;
+            color: black;
+        }
+    </style>
+
+{#    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>#}
+{#    <script>#}
+{#      (adsbygoogle = window.adsbygoogle || []).push({#}
+{#        google_ad_client: "ca-pub-7901900577768682",#}
+{#        enable_page_level_ads: true#}
+{#      });#}
+{#    </script>#}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124521775-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-124521775-1');
+    </script>
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=444826255982696&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px">
+        <div class="container-fluid">
+{#            header#}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <strong>
+                    <a class="navbar-brand" href="{% url 'mainApp:index' %}">Free Market</a>
+                </strong>
+            </div>
+
+{#            buttons on the right side#}
+            <div class="collapse navbar-collapse" id="topNavBar">
+
+{#                search bar#}
+                <form class="navbar-form navbar-left" autocomplete="off" role="search" method="get" action="{% url 'mainApp:index' %}" style="border: 0px">
+                     <div class="form-group autocomplete">
+                        <input id="searchInput" placeholder="see free items in your city" type="text" class="form-control" name="q" value="{{ request.GET.q }}" style="width: 280px">
+                    </div>
+                    <button type="submit" class="btn btn-default"><strong style="color: #9d9d9d"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></strong></button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+{#                    <li class="dropdown">#}
+{#                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">#}
+{#                            <strong>Log In</strong>#}
+{#                            <span class="caret"></span>#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu">#}
+{#                            <li><a href="{% url 'social:begin' 'google-oauth2' %}"><strong>Google</strong></a></li>#}
+{#                            <li><a href="{% url 'social:begin' 'facebook' %}"><strong>Facebook</strong></a></li>#}
+{#                            <li><a href="{% url 'social:begin' 'github' %}"><strong>GitHub</strong></a></li>#}
+{#                            <li><a href="{% url 'mainApp:login_user' %}"><strong>Free Market</strong></a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+                    <li class="{% block login_active %}{% endblock %}">
+                        <a href="{% url 'mainApp:login' %}"><strong>Log In</strong></a>
+                    </li>
+                    <li class="">
+{#                        <a href="https://www.youtube.com/embed/LHVRxpQpkxo?rel=0&autoplay=1&loop=1&playlist=LHVRxpQpkxo" target="_blank"><strong>About</strong></a>#}
+                        <a href="{% url 'mainApp:about' %}"><strong>About</strong></a>
+                    </li>
+{#                    <li class="{% block register_active %}{% endblock %}">#}
+{#                        <a href="{% url 'mainApp:register' %}"><strong>Register</strong></a>#}
+{#                    </li>#}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;<strong>Contact</strong>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://m.me/freemarket.2017" target="_blank"><strong>Facebook</strong></a></li>
+                            <li><a href="https://www.instagram.com/freemarket.2017" target="_blank"><strong>Instagram</strong></a></li>
+                            <li><a href="mailto:freemarket@rondjez.nl"><strong>Email</strong></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="height: 50px"></div>
+
+    {% block body %}{% endblock %}
+
+{#    script to change button transition duration#}
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 2000);
+            }
+        }
+
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              var amount_of_matches = 0;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    amount_of_matches++;
+                    if (amount_of_matches < 11) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                             /*close the list of autocompleted values,
+                          (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                      })
+                        ;
+                      a.appendChild(b);
+                    }
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+{#                e.preventDefault();#}
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+              });
+        }
+
+        /*An array containing city names:*/
+        var cities = [
+{#            Nederland#}
+            "Amsterdam","Amstelveen","Almere","Arnhem","Apeldoorn","Amersfoort","Assen","Alkmaar","Alphen aan den Rijn","Aalsmeer",
+            "Breda","Best","Bergen op Zoom",
+            "Delft","Den Haag","Den Bosch", "Dordrecht","Deventer","Doetinchem","Den Helder","Diemen",
+            "Eindhoven","Enschede","Empel",
+            "Flushing",
+            "Groningen","Gouda",
+            "Heerlen","Helmond","Haarlem","Haringen","Hilversum","Hengelo","Hoofddorp",
+            "Kerkrade","Kampen",
+            "Leiden","Leeuwarden","Lelystad","Lisse","Landgraaf","Leiderdorp",
+            "Maastricht","Middelburg",
+            "Nijmegen","Naarden",
+            "Rotterdam","Rijswijk","Roermond","Roosendaal",
+            "Sittard","Sneek","Schiedam",
+            "Tilburg","Tiel",
+            "Utrecht",
+            "Valkenswaard","Venlo","Veldhoven","Veghel","Volendam","Vlissingen","Voorburg",
+            "Weert","Wageningen",
+            "Zwolle","Zutphen","Zeist","Zaanstad","Zaandam","Zoetermeer","Zandvoort",
+{#            België#}
+            "Antwerp",
+            "Brussels","Brugge","Bastogne",
+            "Ghent","Genk",
+            "Hasselt",
+            "Kortrijk",
+            "Leuven","Liège",
+            "Turnhout",
+{#            Duitsland#}
+            "Berlin","Braunschweig",
+            "Cologne",
+            "Darmstadt","Dusseldorf",
+            "Heidelberg",
+            "Mannheim","Munich",
+{#            Frankrijk#}
+            "Paris",
+{#            Polen#}
+            "Gdansk","Gdynia",
+            "Katowice","Krakow",
+            "Lodz","Lublin",
+            "Poznan",
+            "Sopot","Szczecin",
+            "Warsaw","Wroclaw",
+{#            Italië#}
+            "Florence",
+            "Padova","Pisa","Prato",
+            "Rome",
+            "Turin",
+            "Venice",
+{#            Ierland#}
+            "Dublin",
+{#            Spanje#}
+            "Barcelona","Bilbao",
+            "Madrid",
+            "Santander",
+            "Valencia",
+{#            Denemarken#}
+            "Copenhagen",
+{#            Luxemburg#}
+            "Luxembourg",
+{#            Portugal#}
+            "Lisbon",
+            "Ponta Delgada",
+{#            Kroatië#}
+            "Dubrovnik",
+            "Karlovac",
+            "Pazin","Pula",
+            "Rijeka","Rovinj",
+            "Zagreb",
+{#            Bulgarije#}
+            "Sofia","Varna",
+{#            Hongarije#}
+            "Budapest",
+{#            Verenigd Koningkrijk#}
+            "Birmingham",
+            "London","Liverpool",
+            "Manchester",
+{#            Verenigde Staten#}
+            "Los Angeles","Las Vegas",
+            "New York",
+            "San Diego","San Francisco",
+{#            Zwitserland#}
+            "Basel", "Bern",
+            "Geneva",
+            "Lucerne",
+            "Zurich",
+{#            Australië#}
+            "Adelaide",
+            "Brisbane",
+            "Canberra",
+            "Darwin",
+            "Melbourne",
+            "Perth",
+            "Sydney",
+{#            China#}
+            "Beijing",
+            "Chengdu","Chongqing",
+            "Dalian",
+            "Guanzhou",
+            "Hangzhou","Harbin","Haikou",
+            "Nanjing",
+            "Qingdao",
+            "Shanghai","Shenzhen",
+            "Xiamen",
+            "Weihai","Wenzhou","Wuhan",
+{#            Japan#}
+            "Kawasaki","Kyoto",
+            "Osaka",
+            "Tokyo",
+            "Yokohama",
+{#            Korea#}
+            "Seoul",
+{#            Taiwan#}
+            "Hsinchu",
+            "Kaohsiung",
+            "Taipei","Taichung","Tainan",
+{#            Mexico#}
+            "Tijuana",
+{#            special#}
+            "Antwerpen",
+            "Bruxelles",
+            "Düsseldorf",
+            "Firenze",
+            "Gdańsk",
+            "Köln",
+            "Kraków",
+            "Łódź",
+            "München",
+            "Poznań",
+            "Torino",
+            "Warszawa",
+            "Wrocław",
+            "Zürich",
+            "杭州"
+        ];
+
+        /*initiate the autocomplete function on the "searchInput" element, and pass along the cities array as possible autocomplete values:*/
+        autocomplete(document.getElementById("searchInput"), cities);
+    </script>
+</body>
+</html>
