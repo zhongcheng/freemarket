@@ -255,3 +255,9 @@ pre {
         background-repeat: no-repeat;
     }
 }
+
+/*disable update item page form shadow */
+.panel {
+    box-shadow: 0 0px 0px rgba(0,0,0,.05);
+}
+
