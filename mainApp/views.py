@@ -152,7 +152,7 @@ def terms(request):
     if request.user.is_authenticated:
         base_template_name = 'mainApp/base.html'
     else:
-        base_template_name = 'mainApp/base_visitor.html'
+        base_template_name = 'mainApp/base_visitor_kate.html'
     return render(request, 'mainApp/terms.html', {'base_template_name': base_template_name})
 
 
