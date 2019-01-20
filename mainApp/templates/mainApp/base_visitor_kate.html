@@ -45,7 +45,7 @@
         }
 
         .alert2 {
-            background: linear-gradient(to right, #72ce10 0%, #9fff90 100%);
+            background-color: #72ce10;
             color: white;
             border-radius: 0;
             opacity: 0.95;
@@ -103,7 +103,7 @@
             opacity: 0;
         }
 
-{#        for autocomplete#}
+{#        === For Search Bar Autocomplete ===#}
         .autocomplete {
             /*the container must be positioned relative:*/
             position: relative;
@@ -132,6 +132,214 @@
             /*when navigating through the items using the arrow keys:*/
             background-color: white !important;
             color: black;
+        }
+
+{#        === Navbar Style ===#}
+{#        navbar title area#}
+        a.navbar-brand{
+            padding: 0px;
+            width: 0px;
+        }
+
+        /* change navbar color-style */
+        .navbar{
+            border-radius: 0;
+{#            navbar color#}
+            background-color: white;
+            border: #72ce10;
+        }
+
+        .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
+            background-color: white;
+        }
+
+
+{#        navbar toggle button border color#}
+        .navbar-inverse .navbar-toggle {
+            border-color: white;
+        }
+
+        .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+{#            navbar toggle button background color#}
+            background-color: white;
+            border-color: white;
+        }
+
+{#        navbar tab text when focused#}
+        .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+            color: #72ce10;
+        }
+
+        .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+            color: #72ce10;
+        }
+{#        navbar tab text color when focused#}
+
+        .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+{#            navbar tab text color when on that page#}
+            color: #72ce10;
+{#            navbar tab background color when tab selected and on that page#}
+            background-color: white;
+        }
+
+        /* change navbar line color-style */
+        .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: white;
+        }
+
+
+        /*  change navbar font color */
+        .navbar-inverse .navbar-nav>li>a {
+{#                navbar text color when idle#}
+                color: #336600;
+        }
+
+        .navbar-inverse .navbar-brand {
+{#                navbar brand text color when idle#}
+                color: #336600;
+        }
+
+        /* modify navbar dropdown menu style */
+        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+{#            tab background color when navbar dropdown menu opens#}
+            background-color: white;
+        }
+
+        .dropdown-menu {
+            background-color: white;
+            border: 0px;
+            min-width: 141px;
+            border-radius: 10px;
+        }
+
+        .dropdown-menu>li>a {
+            color: #336600;
+            padding: 5px 30px;
+        }
+
+        .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+            background-color: white;
+{#            dropdown menu text color when mouse hovering#}
+            color: #72ce10;
+        }
+
+{#        === Navbar Style When Collapsed ===#}
+        @media (max-width: 1490px) {
+            a.navbar-brand{
+                padding: 0px;
+                width: 100px;
+                height: 50px;
+                background-image: url("https://www.free-market.nl/static/navbar_brand_smile.png");
+                background-size: 100% 100%;
+            }
+
+            .navbar-header {
+                float: none;
+                background-color: white;
+            }
+            .navbar-left,.navbar-right {
+                float: none !important;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+            .navbar-collapse {
+                border-top: 1px solid transparent;
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+                width: 360px;
+                float: right;
+                background-color: white;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+{#            remove the margin on the right to avoid a scrollbar from appearing#}
+            .navbar-right {
+                margin-right: 0px;
+            }
+
+            .navbar-fixed-top {
+                top: 0;
+                border-width: 0 0 1px;
+            }
+            .navbar-collapse.collapse {
+                display: none!important;
+                box-shadow: 0 6px 12px rgba(0,0,0,.1);
+            }
+
+            .nav>li>a {
+                display: -webkit-inline-box;
+            }
+
+            .navbar-nav {
+                float: none!important;
+                margin-top: 7.5px;
+                padding-bottom: 20px;
+            }
+            .navbar-nav>li {
+                float: none;
+            }
+            .navbar-nav>li>a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .collapse.in{
+                display:block !important;
+            }
+
+{#            navbar title text color when idle#}
+            .navbar-inverse .navbar-brand {
+                color: #72ce10;
+            }
+
+{#            navbar sub menu text color#}
+            .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+                color: #336600;
+            }
+
+            .navbar-form {
+                padding-top: 20px;
+            }
+
+            .navbar-nav .open .dropdown-menu {
+                position: static;
+                float: none;
+                width: auto;
+                margin-top: 0;
+                background-color: transparent;
+                border: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+
+            .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+{#                navbar sub menu background color when mouse hovering#}
+                background-color: white;
+            }
+
+{#            navbar sub menu text color when clicked#}
+            .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+                color: #72ce10;
+            }
+
+            .navbar-fixed-top .navbar-collapse {
+                max-height: 460px;
+            }
+
+            /*background image style*/
+            #bg {
+                background-image: url("https://www.free-market.nl/static/bg_kate_cheng_2.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+        }
+
+{#        for smaller phone e.g. iphone 5, dropdown menu width covers the whole width of the screen#}
+        @media (max-width: 350px) {
+            .navbar-collapse {
+                width: inherit;
+                border-radius: 0px;
+            }
         }
     </style>
 
@@ -165,17 +373,18 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px; background-color: transparent">
         <div class="container-fluid">
 {#            header#}
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar" style="background-color: #336600"></span>
+                    <span class="icon-bar" style="background-color: #336600"></span>
+                    <span class="icon-bar" style="background-color: #336600"></span>
                 </button>
+{#                navbar title on the left#}
                 <strong>
-                    <a class="navbar-brand" href="{% url 'mainApp:index' %}">Free Market</a>
+                    <a class="navbar-brand" href="{% url 'mainApp:index' %}"><img src="" style="height: 100%"></a>
                 </strong>
             </div>
 
@@ -203,10 +412,13 @@
 {#                            <li><a href="{% url 'mainApp:login_user' %}"><strong>Free Market</strong></a></li>#}
 {#                        </ul>#}
 {#                    </li>#}
+                    <li class="">
+                        <a href="{% url 'mainApp:index' %}"><strong>Home</strong></a>
+                    </li>
                     <li class="{% block login_active %}{% endblock %}">
                         <a href="{% url 'mainApp:login' %}"><strong>Log In</strong></a>
                     </li>
-                    <li class="">
+                    <li class="{% block about_active %}{% endblock %}">
 {#                        <a href="https://www.youtube.com/embed/LHVRxpQpkxo?rel=0&autoplay=1&loop=1&playlist=LHVRxpQpkxo" target="_blank"><strong>About</strong></a>#}
                         <a href="{% url 'mainApp:about' %}"><strong>About</strong></a>
                     </li>
@@ -216,12 +428,13 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;<strong>Contact</strong>
+{#                            the down arrow#}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://m.me/freemarket.2017" target="_blank"><strong>Facebook</strong></a></li>
-                            <li><a href="https://www.instagram.com/freemarket.2017" target="_blank"><strong>Instagram</strong></a></li>
-                            <li><a href="mailto:freemarket@rondjez.nl"><strong>Email</strong></a></li>
+                            <li><a href="https://m.me/freemarket.2017" target="_blank"><strong>&nbsp;Facebook</strong></a></li>
+                            <li><a href="https://www.instagram.com/freemarket.2017" target="_blank"><strong>&nbsp;Instagram</strong></a></li>
+                            <li><a href="mailto:freemarket@rondjez.nl"><strong>&nbsp;Email</strong></a></li>
                         </ul>
                     </li>
                 </ul>
