@@ -5,13 +5,23 @@
 {% block register_active %}active{% endblock %}
 
 {% block body %}
-{#    alert box#}
+{#    alert box, for errors such as recaptcha#}
     {% if error_message %}
         <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <strong>{{ error_message }}</strong>
+{#          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
+            <div align="center">
+                <strong>{{ error_message }}</strong>
+            </div>
         </div>
     {% endif %}
+
+{#    {% if form.errors %}#}
+{#        <div class="alert">#}
+{#            <div align="center">#}
+{#                <strong>{{ form.errors }}</strong>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
 
     <div class="container-fluid">
         <div style="height: 30px"></div>

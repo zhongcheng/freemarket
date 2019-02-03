@@ -8,8 +8,10 @@
 {#    alert box#}
     {% if error_message %}
         <div class="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <strong>{{ error_message }}</strong>
+{#          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
+          <div align="center">
+              <strong>{{ error_message }}</strong>
+          </div>
         </div>
     {% endif %}
 

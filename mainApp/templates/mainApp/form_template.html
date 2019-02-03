@@ -1,7 +1,7 @@
 {% for field in form %}
     <div class="form-groups">
         <div class="col-sm-offset-4 col-sm-8">
-            <span class="text-danger" style="color: #f44336; opacity: 0.95">{{ field.errors }}</span>
+            <span class="text-danger" style="color: #f44336; opacity: 0.95"><strong>{{ field.errors }}</strong></span>
         </div>
         <label class="control-label col-sm-5" style="color: #336600">{{ field.label_tag }}</label>
         <div class="col-sm-7">{{ field }}</div>
