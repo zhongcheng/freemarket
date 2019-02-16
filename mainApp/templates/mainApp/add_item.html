@@ -34,7 +34,7 @@
                             {% include 'mainApp/form_template.html' %}
 
                             {% load widget_tweaks %}
-                        
+
 {#                            profile form with widget-tweaks style#}
                             {% for hidden in profile_form.hidden_fields %}
                                 {{ hidden }}
@@ -51,8 +51,8 @@
                             {% endfor %}
 
                             <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-7" style="padding-top: 20px">
-                                    <button type="submit" class="btn btn-success"><strong>POST</strong></button>
+                                <div style="padding-top: 20px; padding-right: 30px" align="right">
+                                    <button type="submit" class="btn btn-success" style="width: 280px"><strong>POST</strong></button>
                                 </div>
                             </div>
                         </form>
