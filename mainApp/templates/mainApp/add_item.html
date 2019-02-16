@@ -32,8 +32,9 @@
                         <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% include 'mainApp/form_template.html' %}
-                            {% for field in profile_form %}
 
+                            {% load widget_tweaks %}
+                        
 {#                            profile form with widget-tweaks style#}
                             {% for hidden in profile_form.hidden_fields %}
                                 {{ hidden }}
