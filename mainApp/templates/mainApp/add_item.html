@@ -39,9 +39,19 @@
                                     </div>
                                     <label class="control-label col-sm-5" style="color: #336600;">{{ field.label_tag }}</label>
                                     <div class="col-sm-7">{{ field }}</div>
-                                </div>
-                                <div style="height: 20px"></div>
+                                {{ hidden }}
                             {% endfor %}
+
+                            {% for field in profile_form.visible_fields %}
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}" style="color: #336600">{{ field.label }}</label>
+                                    {{ field|add_class:'form-control' }}
+                                    {% for error in field.errors %}
+                                      <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+
                             <div class="form-group">
                                 <div class="col-sm-offset-5 col-sm-7" style="padding-top: 20px">
                                     <button type="submit" class="btn btn-success"><strong>POST</strong></button>

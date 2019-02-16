@@ -1,10 +1,15 @@
-{% for field in form %}
-    <div class="form-groups">
-        <div class="col-sm-offset-4 col-sm-8">
-            <span class="text-danger" style="color: #f44336; opacity: 0.95"><strong>{{ field.errors }}</strong></span>
-        </div>
-        <label class="control-label col-sm-5" style="color: #336600">{{ field.label_tag }}</label>
-        <div class="col-sm-7">{{ field }}</div>
+{% load widget_tweaks %}
+
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}" style="color: #336600">{{ field.label }}</label>
+        {{ field|add_class:'form-control' }}
+        {% for error in field.errors %}
+          <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+        {% endfor %}
     </div>
-    <div style="height: 20px"></div>
 {% endfor %}
