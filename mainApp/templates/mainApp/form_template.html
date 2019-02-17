@@ -9,12 +9,18 @@
     {% if field.label == "Photo" %}
         <div class="form-group" style="color: #336600">
             {% if not field.value %}
-                <label for="id_photo" style="color: #336600">Photo</label>
+                <label style="color: #336600">Photo</label>
                 <input type="file" name="photo" id="id_photo">
+                {% for error in field.errors %}
+                  <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
             {% else %}
-                <label for="id_photo" style="color: #336600">Photo</label><br>Currently:<br>
+                <label style="color: #336600">Photo</label><br>Currently:<br>
                 <a href="/media/{{ field.value }}" style="overflow-wrap: break-word;">{{ field.value }}</a><br>
                 Replace the current photo:<input type="file" name="photo" id="id_photo">
+                {% for error in field.errors %}
+                  <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
             {% endif %}
         </div>
     {% else %}
