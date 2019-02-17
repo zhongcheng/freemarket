@@ -5,11 +5,25 @@
 {% endfor %}
 
 {% for field in form.visible_fields %}
-    <div class="form-group">
-        <label for="{{ field.id_for_label }}" style="color: #336600">{{ field.label }}</label>
-        {{ field|add_class:'form-control' }}
-        {% for error in field.errors %}
-          <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
-        {% endfor %}
-    </div>
+{#    modify the style of photo uploading field#}
+    {% if field.label == "Photo" %}
+        <div class="form-group" style="color: #336600">
+            {% if not field.value %}
+                <label for="id_photo" style="color: #336600">Photo</label>
+                <input type="file" name="photo" class="form-control" id="id_photo">
+            {% else %}
+                <label for="id_photo" style="color: #336600">Photo</label><br>Currently:<br>
+                <a href="/media/{{ field.value }}" style="overflow-wrap: break-word;">{{ field.value }}</a><br>
+                Replace the current photo:<input type="file" name="photo" class="form-control" id="id_photo">
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}" style="color: #336600">{{ field.label }}</label>
+            {{ field|add_class:'form-control' }}
+            {% for error in field.errors %}
+              <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endfor %}
