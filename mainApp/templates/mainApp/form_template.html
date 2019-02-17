@@ -10,11 +10,11 @@
         <div class="form-group" style="color: #336600">
             {% if not field.value %}
                 <label for="id_photo" style="color: #336600">Photo</label>
-                <input type="file" name="photo" class="form-control" id="id_photo">
+                <input type="file" name="photo" id="id_photo">
             {% else %}
                 <label for="id_photo" style="color: #336600">Photo</label><br>Currently:<br>
                 <a href="/media/{{ field.value }}" style="overflow-wrap: break-word;">{{ field.value }}</a><br>
-                Replace the current photo:<input type="file" name="photo" class="form-control" id="id_photo">
+                Replace the current photo:<input type="file" name="photo" id="id_photo">
             {% endif %}
         </div>
     {% else %}
