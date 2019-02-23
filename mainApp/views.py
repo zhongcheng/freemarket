@@ -116,7 +116,9 @@ def add_item(request):
             item.city = profile_form.cleaned_data['city']
             item.contact_info = profile_form.cleaned_data['contact_info']
 
+            # check if the file types of the uploaded images are okay
             item.photo = request.FILES['photo']
+
             file_type = item.photo.url.split('.')[-1]
             file_type = file_type.lower()
             if file_type not in IMAGE_FILE_TYPES:
@@ -126,6 +128,41 @@ def add_item(request):
                     'error_message': 'Image file type must be PNG, JPG or JPEG',
                 }
                 return render(request, 'mainApp/add_item.html', context)
+
+            # try except - error handling (request.FILES has MultiValueDictKeyError if another_photo is not filled)
+            try:
+                item.another_photo = request.FILES['another_photo']
+
+                file_type = item.another_photo.url.split('.')[-1]
+                file_type = file_type.lower()
+                if file_type not in IMAGE_FILE_TYPES:
+                    context = {
+                        'form': form,
+                        'profile_form': profile_form,
+                        'error_message': 'Image file type must be PNG, JPG or JPEG',
+                    }
+                    return render(request, 'mainApp/add_item.html', context)
+
+            except (KeyError):
+                pass
+
+            # try except - error handling (request.FILES has MultiValueDictKeyError if and_another_photo is not filled)
+            try:
+                item.and_another_photo = request.FILES['and_another_photo']
+
+                file_type = item.and_another_photo.url.split('.')[-1]
+                file_type = file_type.lower()
+                if file_type not in IMAGE_FILE_TYPES:
+                    context = {
+                        'form': form,
+                        'profile_form': profile_form,
+                        'error_message': 'Image file type must be PNG, JPG or JPEG',
+                    }
+                    return render(request, 'mainApp/add_item.html', context)
+
+            except (KeyError):
+                pass
+
             item.photo_width, item.photo_height = get_image_dimensions(item.photo)
             item.compress_image_save()
             # save/update profile instance
@@ -170,9 +207,13 @@ def update_item(request, item_id):
     else:
         item = Item.objects.get(pk=item_id)
         photo_old = item.photo
+        another_photo_old = item.another_photo
+        and_another_photo_old = item.and_another_photo
         if item.user == request.user:
             form = ItemForm(request.POST or None, request.FILES or None, instance=item)
             if form.is_valid():
+
+                # check weather the file types of the image files are okay
                 file_type = item.photo.url.split('.')[-1]
                 file_type = file_type.lower()
                 if file_type not in IMAGE_FILE_TYPES:
@@ -181,11 +222,46 @@ def update_item(request, item_id):
                         'error_message': 'Image file type must be PNG, JPG or JPEG',
                     }
                     return render(request, 'mainApp/update_item.html', context)
+
+                # try except - error handling (request.FILES has ValueError if another_photo is not filled)
+                try:
+                    file_type = item.another_photo.url.split('.')[-1]
+                    file_type = file_type.lower()
+                    if file_type not in IMAGE_FILE_TYPES:
+                        context = {
+                            'form': form,
+                            'error_message': 'Image file type must be PNG, JPG or JPEG',
+                        }
+                        return render(request, 'mainApp/update_item.html', context)
+                except (ValueError):
+                    pass
+
+                # try except - error handling (request.FILES has ValueError if and_another_photo is not filled)
+                try:
+                    file_type = item.and_another_photo.url.split('.')[-1]
+                    file_type = file_type.lower()
+                    if file_type not in IMAGE_FILE_TYPES:
+                        context = {
+                            'form': form,
+                            'error_message': 'Image file type must be PNG, JPG or JPEG',
+                        }
+                        return render(request, 'mainApp/update_item.html', context)
+                except (ValueError):
+                    pass
+
                 item.photo_width, item.photo_height = get_image_dimensions(item.photo)
                 item.compress_image_save()
 
-                # remove the old photo file
+                # remove the old photos
                 image_path = settings.MEDIA_ROOT + '/' + photo_old.name
+                if os.path.isfile(image_path):
+                    os.remove(image_path)
+
+                image_path = settings.MEDIA_ROOT + '/' + another_photo_old.name
+                if os.path.isfile(image_path):
+                    os.remove(image_path)
+
+                image_path = settings.MEDIA_ROOT + '/' + and_another_photo_old.name
                 if os.path.isfile(image_path):
                     os.remove(image_path)
 

@@ -9,17 +9,53 @@
     {% if field.label == "Photo" %}
         <div class="form-group" style="color: #336600">
             {% if not field.value %}
-                <label style="color: #336600">Photo</label>
+                <label style="color: #336600">{{ field.label }}</label>
                 <input type="file" name="photo" id="id_photo">
                 {% for error in field.errors %}
                   <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
                 {% endfor %}
             {% else %}
-                <label style="color: #336600">Photo</label><br>Currently:<br>
-                <a href="/media/{{ field.value }}" style="overflow-wrap: break-word;">{{ field.value }}</a><br>
-                Replace the current photo:<input type="file" name="photo" id="id_photo">
+                <label style="color: #336600">{{ field.label }}</label><br>
+                Current:&nbsp<a href="/media/{{ field.value }}" style="overflow-wrap: break-word;" target="_blank">{{ field.value }}</a><br>
+                Change:&nbsp<input type="file" name="photo" id="id_photo" style="display: inline">
                 {% for error in field.errors %}
                   <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% elif field.label == "Another photo" %}
+        <div class="form-group" style="color: #336600">
+            {% if not field.value %}
+                <label style="color: #336600">{{ field.label }}</label>
+                <input type="file" name="another_photo" id="id_another_photo">
+                {% for error in field.errors %}
+                    <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                <label style="color: #336600">{{ field.label }}</label><br>
+                Current:&nbsp<a href="/media/{{ field.value }}" style="overflow-wrap: break-word;" target="_blank">{{ field.value }}</a>
+                <input type="checkbox" name="another_photo-clear" id="another_photo-clear_id">&nbspRemove<br>
+                Change:&nbsp<input type="file" name="another_photo" id="id_another_photo" style="display: inline;">
+                {% for error in field.errors %}
+                  <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% elif field.label == "And another photo" %}
+        <div class="form-group" style="color: #336600">
+            {% if not field.value %}
+                <label style="color: #336600">{{ field.label }}</label>
+                <input type="file" name="and_another_photo" id="id_and_another_photo">
+                {% for error in field.errors %}
+                    <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                <label style="color: #336600">{{ field.label }}</label><br>
+                Current:&nbsp<a href="/media/{{ field.value }}" style="overflow-wrap: break-word;" target="_blank">{{ field.value }}</a>
+                <input type="checkbox" name="and_another_photo-clear" id="and_another_photo-clear_id">&nbspRemove<br>
+                Change:&nbsp<input type="file" name="and_another_photo" id="id_and_another_photo" style="display: inline">
+                {% for error in field.errors %}
+                    <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
                 {% endfor %}
             {% endif %}
         </div>

@@ -8,7 +8,7 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ['item_name', 'description', 'city', 'contact_info', 'photo']
+        fields = ['item_name', 'description', 'city', 'contact_info', 'photo', 'another_photo', 'and_another_photo']
 
 
 # form for add item page
@@ -16,7 +16,7 @@ class ItemFormForAdd(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ['photo', 'item_name', 'description']
+        fields = ['photo', 'another_photo', 'and_another_photo', 'item_name', 'description']
 
 
 class ProfileForm(forms.ModelForm):

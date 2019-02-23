@@ -1,0 +1,42 @@
+{% load widget_tweaks %}
+
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+{#    modify the style of photo uploading field#}
+    {% if field.label == "Photo" %}
+        <div class="form-group" style="color: #336600">
+            <label style="color: #336600">{{ field.label }}</label>
+            <input type="file" name="photo" id="id_photo">
+            {% for error in field.errors %}
+              <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% elif field.label == "Another photo" %}
+        <div class="form-group" style="color: #336600">
+            <label style="color: #336600">{{ field.label }}</label>
+            <input type="file" name="another_photo" id="id_another_photo">
+            {% for error in field.errors %}
+                <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% elif field.label == "And another photo" %}
+        <div class="form-group" style="color: #336600">
+            <label style="color: #336600">{{ field.label }}</label>
+            <input type="file" name="and_another_photo" id="id_and_another_photo">
+            {% for error in field.errors %}
+                <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}" style="color: #336600">{{ field.label }}</label>
+            {{ field|add_class:'form-control' }}
+            {% for error in field.errors %}
+              <span class="help-block" style="color: #f44336; opacity: 0.95; font-weight: bold">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endfor %}

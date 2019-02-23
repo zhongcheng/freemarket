@@ -27,6 +27,16 @@
                                 <img src="{{ item.photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
                             {% endif %}
                         </a>
+                        <a>
+                            {% if item.another_photo %}
+                                <img src="{{ item.another_photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                            {% endif %}
+                        </a>
+                        <a>
+                            {% if item.and_another_photo %}
+                                <img src="{{ item.and_another_photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                            {% endif %}
+                        </a>
                         <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; color: #336600">{{ item.item_name }}</h2>
                         <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px"><small style="color: #336600; opacity: 0.5">{{ item.city }}, {{item.time}}</small></h2>
                         <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #336600">{{ item.description|urlize|url_target_blank }}</pre>
