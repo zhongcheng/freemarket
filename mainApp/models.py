@@ -52,7 +52,7 @@ class Item(models.Model):
         return self.item_name
 
 
-# remove the corresponding image file after deleting an Item object
+# remove the corresponding image file in media folder after deleting an Item object
 @receiver(post_delete, sender=Item)
 def item_photo_file_delete(sender, instance, **kwargs):
     instance.photo.delete(False)
@@ -69,6 +69,12 @@ class Ad(models.Model):
 
     def __str__(self):
         return self.city
+
+
+# remove the corresponding image file in media folder after deleting an Ad object
+@receiver(post_delete, sender=Ad)
+def ad_photo_file_delete(sender, instance, **kwargs):
+    instance.photo.delete(False)
 
 
 class Profile(models.Model):
