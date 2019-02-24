@@ -29,12 +29,14 @@
                         </a>
                         <a>
                             {% if item.another_photo %}
-                                <img src="{{ item.another_photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                                <div style="height: 5px"></div>
+                                <img src="{{ item.another_photo.url }}" class="img-responsive center">
                             {% endif %}
                         </a>
                         <a>
                             {% if item.and_another_photo %}
-                                <img src="{{ item.and_another_photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                                <div style="height: 5px"></div>
+                                <img src="{{ item.and_another_photo.url }}" class="img-responsive center">
                             {% endif %}
                         </a>
                         <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; color: #336600">{{ item.item_name }}</h2>

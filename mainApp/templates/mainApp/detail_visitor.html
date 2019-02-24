@@ -20,8 +20,18 @@
                         <a>
                             {% if item.photo %}
                                 <img src="{{ item.photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
-                            {% else %}
-                                <h3>No image to display</h3>
+                            {% endif %}
+                        </a>
+                        <a>
+                            {% if item.another_photo %}
+                                <div style="height: 5px"></div>
+                                <img src="{{ item.another_photo.url }}" class="img-responsive center">
+                            {% endif %}
+                        </a>
+                        <a>
+                            {% if item.and_another_photo %}
+                                <div style="height: 5px"></div>
+                                <img src="{{ item.and_another_photo.url }}" class="img-responsive center">
                             {% endif %}
                         </a>
                         <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; color: #336600">{{ item.item_name }} <small style="color: #336600; opacity: 0.5">{{ item.city }}</small></h2>
