@@ -4,6 +4,6 @@ register = template.Library()
 
 
 def url_target_blank(text):
-    return text.replace('<a ', '<a target="_blank" ')
+    return text.replace('<a ', '<a target="_blank" style="text-decoration: none" ')
 
 url_target_blank = register.filter(url_target_blank, is_safe=True)
