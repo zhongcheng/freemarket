@@ -30,7 +30,7 @@
     <script src="{% static 'js/infinite.min.js' %}"></script>
 
 {#    for preload bar#}
-    <script src="{% static 'js/pace.min.js' %}"></script>
+{#    <script src="{% static 'js/pace.min.js' %}"></script>#}
 	<link rel="stylesheet" type="text/css" href="{% static 'mainApp/preload.css' %}">
 
     <style>
@@ -146,18 +146,18 @@
         .navbar{
             border-radius: 0;
 {#            navbar color#}
-            background-color: white;
+            background-color: transparent;
             border: #72ce10;
         }
 
         .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
-            background-color: white;
+            background-color: transparent;
         }
 
 
 {#        navbar toggle button border color#}
         .navbar-inverse .navbar-toggle {
-            border-color: white;
+            border-color: transparent;
         }
 
         .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
@@ -183,12 +183,12 @@
 {#            navbar tab text color when on that page#}
             color: #72ce10;
 {#            navbar tab background color when tab selected and on that page#}
-            background-color: white;
+            background-color: transparent;
         }
 
         /* change navbar line color-style */
         .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-            border-color: white;
+            border-color: transparent;
         }
 
 
@@ -239,7 +239,7 @@
 
             .navbar-header {
                 float: none;
-                background-color: white;
+                background-color: transparent;
             }
             .navbar-left,.navbar-right {
                 float: none !important;
@@ -705,5 +705,16 @@
         /*initiate the autocomplete function on the "searchInput" element, and pass along the cities array as possible autocomplete values:*/
         autocomplete(document.getElementById("searchInput"), cities);
     </script>
+
+{#square loader#}
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+
 </body>
 </html>
