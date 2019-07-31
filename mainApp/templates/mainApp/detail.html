@@ -48,7 +48,7 @@
                                 <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 5px; margin-left: 10px"
                                                        type="button"
                                                        value="Message Offeror"
-                                                       onclick="window.open('{{ item.contact_info }}','_blank')" />
+                                                       onclick="window.open('{{ item.contact_info }}','url_target_blank')" />
                             </form>
                         {% else %}
                             <h5 style="padding-left:10px; overflow: hidden; color: #336600"><strong style="color: #336600">Offeror's Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
