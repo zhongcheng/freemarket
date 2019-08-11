@@ -192,7 +192,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <strong style="font-family: 'Arial Black';">
+                {% if request.user_agent.is_mobile %}
+                    <strong>
+                {% else %}
+                    <strong style="font-family: 'Arial Black';">
+                {% endif %}
                     <a class="navbar-brand" href="{% url 'mainApp:index' %}">Free Market</a>
                 </strong>
             </div>
