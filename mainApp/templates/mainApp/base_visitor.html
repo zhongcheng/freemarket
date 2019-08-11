@@ -45,8 +45,9 @@
         }
 
         .alert2 {
-            background-color: #72ce10;
-            color: white;
+{#            background: linear-gradient(to right, #72ce10 0%, #9fff90 100%);#}
+            background: white;
+            color: #72ce10;
             border-radius: 0;
             opacity: 0.95;
             transition: opacity 2s;
@@ -223,6 +224,9 @@
 {#                            <li><a href="{% url 'mainApp:login_user' %}"><strong>Free Market</strong></a></li>#}
 {#                        </ul>#}
 {#                    </li>#}
+                    <li class="">
+                        <a href="{% url 'mainApp:index' %}"><strong>Home</strong></a>
+                    </li>
                     <li class="{% block login_active %}{% endblock %}">
                         <a href="{% url 'mainApp:login' %}"><strong>Log In</strong></a>
                     </li>

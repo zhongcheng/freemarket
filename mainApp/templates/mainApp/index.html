@@ -57,12 +57,11 @@
                             border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #72ce10;
                             border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
                                 <h5>
-{#                                    request didn't work#}
-{#                                    {% if request.user_agent.is_mobile %}#}
+                                    {% if request.user_agent.is_mobile %}
                                         <span class="makeleft" style="color: #72ce10"><strong>{{ item.item_name }}</strong></span>
-{#                                    {% else %}#}
-{#                                        <span class="makeleft" style="color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</span>#}
-{#                                    {% endif %}#}
+                                    {% else %}
+                                        <span class="makeleft" style="color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</span>
+                                    {% endif %}
                                     <span class="makeright">
                                         <form>
                                             <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px;
@@ -124,7 +123,7 @@
 
     <div style="height: 50px"></div>
 
-    <div class="alert2 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
+    <div class="alert5 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <div align="center">
             <strong>Please let us know if you have any suggestions so that we could improve this website and make it simpler, faster and smarter.</strong>

@@ -41,8 +41,8 @@
         }
 
         .alert2 {
-            background: linear-gradient(to right, #72ce10 0%, #9fff90 100%);
-            color: white;
+            background: white;
+            color: #72ce10;
             border-radius: 0;
             opacity: 0.95;
             transition: opacity 2s;
@@ -65,6 +65,15 @@
             opacity: 0.95;
             transition: opacity 2s;
             padding: 5px;
+        }
+
+        .alert5 {
+            background: #72ce10;
+            color: white;
+            border-radius: 0;
+            opacity: 0.95;
+            transition: opacity 2s;
+            padding: 15px;
         }
 
         .closebtn {
@@ -176,12 +185,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-{#                request didn't work#}
-{#                {% if request.user_agent.is_mobile %}#}
+                {% if request.user_agent.is_mobile %}
                     <strong>
-{#                {% else %}#}
-{#                    <strong style="font-family: 'Arial Black';">#}
-{#                {% endif %}#}
+                {% else %}
+                    <strong style="font-family: 'Arial Black';">
+                {% endif %}
                     <a class="navbar-brand" href="{% url 'mainApp:index' %}">Hi {{ user.username }} !</a>
                 </strong>
             </div>
