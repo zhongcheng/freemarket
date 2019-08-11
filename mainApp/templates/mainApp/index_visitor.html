@@ -13,18 +13,15 @@
     {% endif %}
 
     <div style="padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;text-align: center">
-{#        <strong style="color: #336600">Most Listed Cities: </strong>#}
-        <a href="https://www.free-market.nl/?q=amsterdam" style="text-decoration: none">Amsterdam</a> <a style="color: #336600">|</a>
-{#                <a href="https://www.free-market.nl/?q=berlin">Berlin</a> <a>|</a>#}
-{#                <a href="https://www.free-market.nl/?q=copenhagen">Copenhagen</a> <a>|</a>#}
-        <a href="https://www.free-market.nl/?q=delft" style="text-decoration: none">Delft</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=den+haag" style="text-decoration: none">Den Haag</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=eindhoven" style="text-decoration: none">Eindhoven</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=groningen" style="text-decoration: none">Groningen</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=leiden" style="text-decoration: none">Leiden</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=maastricht" style="text-decoration: none">Maastricht</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=rotterdam" style="text-decoration: none">Rotterdam</a> <a style="color: #336600">|</a>
-        <a href="https://www.free-market.nl/?q=utrecht" style="text-decoration: none">Utrecht</a>
+{#        <a href="https://www.free-market.nl/?q=amsterdam" style="text-decoration: none">Amsterdam</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=delft" style="text-decoration: none">Delft</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=den+haag" style="text-decoration: none">Den Haag</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=eindhoven" style="text-decoration: none">Eindhoven</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=groningen" style="text-decoration: none">Groningen</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=leiden" style="text-decoration: none">Leiden</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=maastricht" style="text-decoration: none">Maastricht</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=rotterdam" style="text-decoration: none">Rotterdam</a> <a style="color: #336600">|</a>#}
+{#        <a href="https://www.free-market.nl/?q=utrecht" style="text-decoration: none">Utrecht</a>#}
     </div>
 
     {% if not items %}
@@ -37,7 +34,8 @@
             {% if items %}
                 {% for item in items %}
                     <div class="col-sm-6 col-md-4 col-lg-3 infinite-item" style="padding-left: 5px;padding-right: 5px">
-                        <div class="thumbnail" style="padding: 0px;margin-bottom: 10px; border-top-right-radius: 0px; border-top-left-radius: 0px">
+                        <div class="thumbnail" style="padding: 0px;margin-bottom: 10px; border-top-right-radius: 0px; border-top-left-radius: 0px;
+                        border: 0px">
                             <div class="image">
 {#                                <a href="{% url 'mainApp:login' %}">#}
                                 <a href="{% url 'mainApp:detail' item.id %}">
@@ -48,19 +46,22 @@
                                     {% endif %}
                                 </a>
                             </div>
-                            <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
+                            <div class="caption" style="padding-bottom: 0px;padding-top: 1px;
+                            border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #72ce10;
+                            border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
                                 <h5>
-                                    <span class="makeleft" style="color: #336600"><big><strong>{{ item.item_name }}</strong></big></span>
+                                    <span class="makeleft" style="color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</span>
                                     <span class="makeright">
                                         <form>
-                                            <input class="btn btn-success" style="font-weight: bold; height: 40px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 10px"
+                                            <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px;
+                                            padding-left: 10px; padding-right: 10px; border-radius: 5px; margin-top: 5px;"
                                                    type="button"
                                                    value="See Details"
                                                    onclick="window.location.href='{% url 'mainApp:detail' item.id %}'" />
                                         </form>
                                     </span>
                                 </h5><br>
-                                <h5 style="color: #336600; margin-top: 5px">{{ item.city }}, {{ item.time }}</h5>
+                                <h5 style="color: #72ce10; margin-top: 0px">{{ item.city }}, {{ item.time }}</h5>
                             </div>
                         </div>
                     </div>

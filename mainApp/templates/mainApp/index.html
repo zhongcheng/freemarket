@@ -39,7 +39,7 @@
             {% if items %}
                 {% for item in items %}
                     <div class="col-sm-6 col-md-4 col-lg-3 infinite-item" style="padding-left: 5px;padding-right: 5px">
-                        <div class="thumbnail" style="padding: 0px;margin-bottom: 10px; border-top-right-radius: 0px; border-top-left-radius: 0px">
+                        <div class="thumbnail" style="padding: 0px;margin-bottom: 10px; border: 0px">
                             {% if item.availability %}
                                 <div class="image">
                             {% else %}
@@ -53,19 +53,22 @@
                                     {% endif %}
                                 </a>
                             </div>
-                            <div class="caption" style="padding-bottom: 0px;padding-top: 0px">
+                            <div class="caption" style="padding-bottom: 0px;padding-top: 1px;
+                            border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-color: #72ce10;
+                            border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
                                 <h5>
-                                    <span class="makeleft" style="color: #336600"><big><strong>{{ item.item_name }}</strong></big></span>
+                                    <span class="makeleft" style="color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</span>
                                     <span class="makeright">
                                         <form>
-                                            <input class="btn btn-success" style="font-weight: bold; height: 40px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 10px"
+                                            <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px;
+                                            padding-left: 10px; padding-right: 10px; border-radius: 5px; margin-top: 5px;"
                                                    type="button"
                                                    value="See Details"
                                                    onclick="window.location.href='{% url 'mainApp:detail' item.id %}'" />
                                         </form>
                                     </span>
                                 </h5><br>
-                                <h5 style="color: #336600; margin-top: 5px">{{ item.city }}, {{ item.time }}</h5>
+                                <h5 style="color: #72ce10; margin-top: 5px">{{ item.city }}, {{ item.time }}</h5>
                             </div>
                         </div>
                     </div>
