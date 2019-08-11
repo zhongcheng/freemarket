@@ -13,7 +13,7 @@
                 <div style="height: 10px"></div>
                 {% for item in items reversed %}
                     <div class="col-sm-6 col-md-4 col-lg-3" style="padding-left: 5px;padding-right: 5px">
-                        <div class="thumbnail" style="padding:0px;margin-bottom: 10px">
+                        <div class="thumbnail" style="padding:0px;margin-bottom: 10px; border: none">
                             {% if item.availability %}
                                 <div class="image">
                             {% else %}
@@ -27,23 +27,24 @@
                                     {% endif %}
                                 </a>
                             </div>
-                            <div class="caption" style="padding-top: 0px">
-                                <h4 style="color: #336600">{{ item.item_name }} <small style="color: #336600; opacity: 0.5">{{ item.city }}</small></h4>
+                            <div class="caption" style="padding-top: 0px; border-bottom: 1px solid #72ce10; border-right: 1px solid #72ce10; border-left: 1px solid #72ce10;
+                            border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding-top: 1px">
+                                <h4 style="color: #72ce10; font-weight: bold">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h4>
 
 {#                                item update button#}
-                                <a href="{% url 'mainApp:update_item' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #336600">Update</a>
+                                <a href="{% url 'mainApp:update_item' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #72ce10; border: 1px solid #72ce10">Update</a>
 
                                 {% if item.availability %}
-                                    <a href="{% url 'mainApp:item_unavailable' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #336600">Mark Reserved</a>
+                                    <a href="{% url 'mainApp:item_unavailable' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #72ce10; border: 1px solid #72ce10">Mark Reserved</a>
                                 {% else %}
-                                    <a href="{% url 'mainApp:item_available' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #336600">Mark Available</a>
+                                    <a href="{% url 'mainApp:item_available' item.id %}" class="btn btn-default btn-sm" role="button" style="color: #72ce10; border: 1px solid #72ce10">Mark Available</a>
                                 {% endif %}
 
 {#                                item delete button#}
                                 <form action="{% url 'mainApp:delete_item' item.id %}" method="post" style="display: inline;">
                                     {% csrf_token %}
                                     <input type="hidden" name="item_id" value="{{ item.id }}" />
-                                    <button type="submit" class="btn btn-default btn-sm" style="color: red">
+                                    <button type="submit" class="btn btn-default btn-sm" style="color: #72ce10; border: 1px solid #72ce10">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </button>
                                 </form>
@@ -54,8 +55,8 @@
                     {% cycle '' '' '' '<div class="clearfix visible-lg"></div>' %}
                 {% endfor %}
             {% else %}
-                <div class="alert3">
-                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <div class="alert5">
+{#                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
                   <div align="center">
                     <strong>At the moment, you do not have any listed item.</strong>
                   </div>
@@ -67,9 +68,9 @@
     <div style="height: 50px"></div>
 
     <div class="alert2 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+{#        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
         <div align="center">
-            <strong>After giving out your item, please do not forget to remove your post (take your contact info offline) or mark it as unavailable.</strong>
+            <strong>After giving out your item, please do not forget to remove your post (take your contact info offline).</strong>
         </div>
     </div>
 

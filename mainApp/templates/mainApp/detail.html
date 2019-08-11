@@ -17,8 +17,8 @@
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4" style="padding-left: 5px;padding-right: 5px">
-                <div class="panel panel-default">
-                    <div class="panel-body" style="padding:0px;">
+                <div class="panel panel-default" style="border: none">
+                    <div class="panel-body" style="padding:0px">
                         {% if not item.availability %}
                             <h3 style="color: #72ce10; font-weight: bold" align="center">R e s e r v e d</h3>
                             <div style="height: 10px"></div>
@@ -40,26 +40,34 @@
                                 <img src="{{ item.and_another_photo.url }}" class="img-responsive center">
                             {% endif %}
                         </a>
-                        <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; color: #336600">{{ item.item_name }}</h2>
-                        <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px"><small style="color: #336600; opacity: 0.5">{{ item.city }}, {{item.time}}</small></h2>
-                        <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #336600">{{ item.description|urlize|url_target_blank }}</pre>
-                        {% if 'https://m.me/' in item.contact_info or 'https://wa.me/' in item.contact_info %}
-                            <form>
-                                <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 5px; margin-left: 10px"
-                                                       type="button"
-                                                       value="Message Offeror"
-                                                       onclick="window.open('{{ item.contact_info }}','url_target_blank')" />
-                            </form>
-                        {% else %}
-                            <h5 style="padding-left:10px; overflow: hidden; color: #336600"><strong style="color: #336600">Offeror's Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
-                        {% endif %}
-                        <div style="height: 5px"></div>
+                        <div style="border-left: 2px solid #72ce10; border-right: 2px solid #72ce10; border-bottom: 2px solid #72ce10;
+                        border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding-top: 1px">
+                            {% if request.user_agent.is_mobile %}
+                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-weight: bold">{{ item.item_name }}</h2>
+                                <h4 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}, {{item.time}}</h4>
+                            {% else %}
+                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</h2>
+                                <h4 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px; font-family: 'Arial Narrow'; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}, {{item.time}}</h4>
+                            {% endif %}
+                            <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #72ce10">{{ item.description|urlize|url_target_blank }}</pre>
+                            {% if 'https://m.me/' in item.contact_info or 'https://wa.me/' in item.contact_info %}
+                                <form>
+                                    <input class="btn btn-success" style="font-weight: bold; height: 30px; padding: 0px; padding-left: 10px; padding-right: 10px; border-radius: 5px; margin-left: 10px"
+                                                           type="button"
+                                                           value="Message Offeror"
+                                                           onclick="window.open('{{ item.contact_info }}','url_target_blank')" />
+                                </form>
+                            {% else %}
+                                <h5 style="padding-left:10px; overflow: hidden; color: #336600"><strong style="color: #336600">Offeror's Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
+                            {% endif %}
+                            <div style="height: 10px"></div>
+                        </div>
 {#                        <div style="padding-left: 10px" class="fb-share-button" data-href="https://www.free-market.nl/{{ item.id }}/detail/" data-layout="button" data-size="small" data-mobile-iframe="true">#}
 {#                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.free-market.nl%2F{{ item.id }}%2Fdetail%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">#}
 {#                                Share#}
 {#                            </a>#}
 {#                        </div>#}
-                        <div style="height: 10px"></div>
+{#                        <div style="height: 10px"></div>#}
                     </div>
                 </div>
             </div>
@@ -69,9 +77,9 @@
     <div style="height: 200px"></div>
 
     <div class="alert5 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+{#        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
         <div align="center">
-            <strong>Please let us know if you see any buy and sell post, we will remove that, appreciated!</strong>
+            <strong>Please let us know if you see any buy and sell post, we will kindly ask the person to post it elsewhere.</strong>
         </div>
     </div>
 
