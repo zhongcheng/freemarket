@@ -40,7 +40,7 @@
                             {% if request.user_agent.is_mobile %}
                                 <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; color: #72ce10; font-weight: bold; margin-top: 10px">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h2>
                             {% else %}
-                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; color: #72ce10; font-family: 'Arial Black'; margin-top: 10px">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h2>
+                                <h2 style="padding-left:10px; padding-right:10px; padding-bottom: 3px; overflow: hidden; color: #72ce10; font-family: 'Arial Black'; margin-top: 10px">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h2>
                             {% endif %}
                             <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #72ce10;">{{ item.description }}</pre>
                             <h5 style="padding-left:10px; overflow: hidden; color: #72ce10"><strong><a href="{% url 'mainApp:login' %}" style="text-decoration: none">Log in</a> to see who is giving this out for free</strong></h5>

@@ -47,8 +47,8 @@
                                 <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-weight: bold">{{ item.item_name }}</h2>
                                 <h4 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}, {{item.time}}</h4>
                             {% else %}
-                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</h2>
-                                <h4 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px; font-family: 'Arial Narrow'; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}, {{item.time}}</h4>
+                                <h2 style="padding-left:10px; padding-right:10px; padding-bottom: 3px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</h2>
+                                <h4 style="padding-left:10px; padding-right:10px; padding-bottom: 2px; overflow: hidden; margin-top:0px; font-family: 'Arial Narrow'; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}, {{item.time}}</h4>
                             {% endif %}
                             <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #72ce10">{{ item.description|urlize|url_target_blank }}</pre>
                             {% if 'https://m.me/' in item.contact_info or 'https://wa.me/' in item.contact_info %}
@@ -59,7 +59,7 @@
                                                            onclick="window.open('{{ item.contact_info }}','url_target_blank')" />
                                 </form>
                             {% else %}
-                                <h5 style="padding-left:10px; overflow: hidden; color: #336600"><strong style="color: #336600">Offeror's Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
+                                <h5 style="padding-left:10px; overflow: hidden; color: #72ce10"><strong style="color: #72ce10">Offeror's Contact: </strong>{{ item.contact_info|urlize|url_target_blank }}</h5>
                             {% endif %}
                             <div style="height: 10px"></div>
                         </div>
@@ -77,7 +77,7 @@
 
     <div style="height: 50px"></div>
 
-    <div class="alert5 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
+    <div class="alert6 alert-bottom" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px">
 {#        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
         <div align="center">
             <strong>Please let us know if you see any buy and sell post, we will kindly ask the person to post it elsewhere.</strong>
