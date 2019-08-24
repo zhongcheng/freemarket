@@ -19,25 +19,45 @@
             <div class="col-lg-4" style="padding-left: 5px;padding-right: 5px">
                 <div class="panel panel-default" style="border: none">
                     <div class="panel-body" style="padding:0px">
+{#                            <h3 style="color: #72ce10; font-weight: bold" align="center">Reserved</h3>#}
+{#                            <img src="https://www.free-market.nl/static/reserved.png" class="img-responsive right" style="width: 150px">#}
+{#                            <div style="height: 10px"></div>#}
                         {% if not item.availability %}
-                            <h3 style="color: #72ce10; font-weight: bold" align="center">R e s e r v e d</h3>
-                            <div style="height: 10px"></div>
+                            <div style="display: flex; justify-content: center">
+                                {% if request.user_agent.is_mobile %}
+                                    <img id="anglerandom" src="https://www.free-market.nl/static/reserved_2.png" style="position: absolute; top: 150px; width: 300px; z-index: 2"/>
+                                {% else %}
+                                    <img id="anglerandom" src="https://www.free-market.nl/static/reserved_2.png" style="position: absolute; top: 250px; width: 500px; z-index: 2"/>
+                                {% endif %}
+                            </div>
                         {% endif %}
                         <a>
                             {% if item.photo %}
-                                <img src="{{ item.photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                                {% if item.availability %}
+                                    <img src="{{ item.photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px">
+                                {% else %}
+                                    <img src="{{ item.photo.url }}" class="img-responsive center" style="border-top-left-radius: 3px; border-top-right-radius: 3px; opacity: 0.3;z-index: 1">
+                                {% endif %}
                             {% endif %}
                         </a>
                         <a>
                             {% if item.another_photo %}
                                 <div style="height: 5px"></div>
-                                <img src="{{ item.another_photo.url }}" class="img-responsive center">
+                                {% if item.availability %}
+                                    <img src="{{ item.another_photo.url }}" class="img-responsive center">
+                                {% else %}
+                                    <img src="{{ item.another_photo.url }}" class="img-responsive center" style="opacity: 0.3; z-index: 1">
+                                {% endif %}
                             {% endif %}
                         </a>
                         <a>
                             {% if item.and_another_photo %}
                                 <div style="height: 5px"></div>
-                                <img src="{{ item.and_another_photo.url }}" class="img-responsive center">
+                                {% if item.availability %}
+                                    <img src="{{ item.and_another_photo.url }}" class="img-responsive center">
+                                {% else %}
+                                    <img src="{{ item.and_another_photo.url }}" class="img-responsive center" style="opacity: 0.3; z-index: 1">
+                                {% endif %}
                             {% endif %}
                         </a>
                         <div>
@@ -83,5 +103,10 @@
             <strong>Please let us know if you see any buy and sell post, we will kindly ask the person to post it elsewhere.</strong>
         </div>
     </div>
+
+    <script>
+        var anglerandom = document.querySelector('#anglerandom');
+        anglerandom.style.transform = "rotate(" + Math.floor(Math.random() * 10 - 4) * 5 + "deg)";
+    </script>
 
 {% endblock %}
