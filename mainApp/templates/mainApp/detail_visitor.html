@@ -38,12 +38,14 @@
 {#                        <div style="border-left: 2px solid #72ce10; border-right: 2px solid #72ce10; border-bottom: 2px solid #72ce10;#}
 {#                        border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding-top: 1px">#}
                             {% if request.user_agent.is_mobile %}
-                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; color: #72ce10; font-weight: bold; margin-top: 10px">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h2>
+                                <h2 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-weight: bold">{{ item.item_name }}</h2>
+                                <h4 style="padding-left:10px; padding-right:10px; overflow: hidden; margin-top:0px; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}</h4>
                             {% else %}
-                                <h2 style="padding-left:10px; padding-right:10px; padding-bottom: 3px; overflow: hidden; color: #72ce10; font-family: 'Arial Black'; margin-top: 10px">{{ item.item_name }} <small style="color: #72ce10; opacity: 0.5">{{ item.city }}</small></h2>
+                                <h2 style="padding-left:10px; padding-right:10px; padding-bottom: 3px; overflow: hidden; margin-bottom:0px; margin-top: 10px; color: #72ce10; font-family: 'Arial Black'">{{ item.item_name }}</h2>
+                                <h4 style="padding-left:10px; padding-right:10px; padding-bottom: 2px; overflow: hidden; margin-top:0px; font-family: 'Arial Narrow'; margin-bottom: 5px; color: #72ce10; opacity: 0.5">{{ item.city }}</h4>
                             {% endif %}
                             <pre style="font: -webkit-control; font-size: 14px; padding-left:10px; padding-right:5px; line-height: 20px; color: #72ce10;">{{ item.description }}</pre>
-                            <h5 style="padding-left:10px; overflow: hidden; color: #72ce10"><strong><a href="{% url 'mainApp:login' %}" style="text-decoration: none">Log in</a> to see who is giving this out for free</strong></h5>
+                            <h5 style="padding-left:10px; overflow: hidden; color: #72ce10"><strong><a href="{% url 'mainApp:login' %}" style="text-decoration: none">Log in</a> to see who is giving this out for free.</strong></h5>
                             <div style="height: 10px"></div>
                             <div style="padding-left: 10px" class="fb-share-button" data-href="https://www.free-market.nl/{{ item.id }}/detail/" data-layout="button" data-size="small" data-mobile-iframe="true">
                                 <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.free-market.nl%2F{{ item.id }}%2Fdetail%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
