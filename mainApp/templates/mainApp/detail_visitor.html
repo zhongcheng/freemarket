@@ -1,6 +1,6 @@
 {% extends 'mainApp/base_visitor.html' %}
 
-{% block ogimage %}<meta property="og:image" content="{{ item.photo.url }}">{% endblock %}
+{% block ogimage %}<meta property="og:image" content="https://www.free-market.nl{{ item.photo.url }}">{% endblock %}
 
 {% block title %}
     {{ item.item_name }}
